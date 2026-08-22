@@ -1,0 +1,17 @@
+[project]
+name = "school-management-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "customtkinter>=6.0.0",
+    "pillow>=12.3.0",
+]
+
+[project.scripts]
+school-management-app = "school_management_app:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
