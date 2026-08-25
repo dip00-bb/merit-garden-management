@@ -1,7 +1,8 @@
 import customtkinter as ctk
 
-from school_management_app.canvas import TkCanvas
-from school_management_app.canvas import load_image_and_resize
+from school_management_app.components import TkCanvas
+from school_management_app.components import Login
+from school_management_app.utilitis import load_image_and_resize
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -30,7 +31,21 @@ class App(ctk.CTk):
             background_image=canvas_image
             )
         canvas.pack(fill="both",expand=True)
-        canvas.after(2000,canvas.destroy)
+        login=Login(
+                parent=self,
+                width=250,
+                height=200
+                )     
+        def show_login():
+            canvas.destroy()
+            login.pack(
+                    anchor="center",
+                    expand=True
+                )
+            
+        canvas.after(2000,show_login)
+        
+ 
         
         
         
