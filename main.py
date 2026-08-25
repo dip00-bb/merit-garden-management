@@ -33,7 +33,7 @@ class App(ctk.CTk):
         canvas.pack(fill="both",expand=True)
         login=Login(
                 parent=self,
-                width=250,
+                width=400,
                 height=200
                 )     
         def show_login():
@@ -41,8 +41,7 @@ class App(ctk.CTk):
             login.pack(
                     anchor="center",
                     expand=True
-                )
-            
+                ) 
         canvas.after(2000,show_login)
         
  
