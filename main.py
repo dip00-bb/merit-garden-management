@@ -1,8 +1,12 @@
 import customtkinter as ctk
 
 from school_management_app.components import TkCanvas
-from school_management_app.components import Login
+# from school_management_app.components import Login
+from school_management_app.view import Login
+from school_management_app.components import SelectTask
 from school_management_app.utilitis import load_image_and_resize
+from school_management_app.controller import LoginController
+from school_management_app.model import UserModel
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -31,21 +35,39 @@ class App(ctk.CTk):
             background_image=canvas_image
             )
         canvas.pack(fill="both",expand=True)
-        login=Login(
+        
+        #  login 
+        
+        user_model=UserModel()
+    
+        self.login_view=Login(
                 parent=self,
                 width=400,
-                height=200
+                height=200,
                 )     
+        
+        login_controller=LoginController(view=self.login_view,model=user_model,app=self)
+        self.login_view.set_controller(login_controller)
+        
         def show_login():
             canvas.destroy()
-            login.pack(
+            self.login_view.pack(
                     anchor="center",
                     expand=True
                 ) 
         canvas.after(2000,show_login)
         
- 
         
+        
+        self.select_task=SelectTask(self,width=400,height=250)
+
+        
+    def on_login_success(self):
+        self.login_view.destroy()
+        self.select_task.pack(
+            anchor="center",
+            expand=True
+        )
         
         
 if __name__=="__main__":
