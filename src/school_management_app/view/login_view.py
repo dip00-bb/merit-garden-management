@@ -1,14 +1,6 @@
 import customtkinter as ctk 
 
-def grid_widget(entry,r,c,py,px,direction="ew"):
-    entry.grid(
-        row=r, 
-        column=c,
-        pady=py,
-        padx=px,
-        sticky=direction
-    )
-    
+from ..utilitis import grid_widget
 
 
     

@@ -1,12 +1,25 @@
 import customtkinter as ctk
 
-from school_management_app.components import TkCanvas
-# from school_management_app.components import Login
-from school_management_app.view import Login
-from school_management_app.components import SelectTask
-from school_management_app.utilitis import load_image_and_resize
-from school_management_app.controller import LoginController
+# models 
 from school_management_app.model import UserModel
+from school_management_app.model import SelectTaskModel
+
+# views (ui)
+from school_management_app.components import TkCanvas
+from school_management_app.view import Login
+from school_management_app.view import SelectTask
+
+# controllers
+from school_management_app.controller import LoginController
+from school_management_app.controller import SelectTaskController
+
+# utilities functions
+from school_management_app.utilitis import load_image_and_resize
+
+
+
+
+
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -57,17 +70,30 @@ class App(ctk.CTk):
                 ) 
         canvas.after(2000,show_login)
         
-        
-        
-        self.select_task=SelectTask(self,width=400,height=250)
 
         
+        # select task
+        
+        select_task_model=SelectTaskModel()
+        self.select_task_view=SelectTask(
+                parent=self,
+                width=500,
+                height=500
+            )
+
+        select_task_controller=SelectTaskController(view=self.select_task_view,model=select_task_model,app=self)
+        self.select_task_view.set_controller(select_task_controller)
+
     def on_login_success(self):
         self.login_view.destroy()
-        self.select_task.pack(
+        self.select_task_view.pack(
             anchor="center",
             expand=True
-        )
+            )
+
+
+        
+
         
         
 if __name__=="__main__":
