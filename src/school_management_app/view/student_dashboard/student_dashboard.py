@@ -3,7 +3,7 @@ from .student_sidebar import StudentDashboardSidebar
 from ...utilitis import grid_widget
 class StudentDashboard(ctk.CTkFrame):
     def __init__(self,parent,height,weight,**kwargs):
-        super().__init__(parent,height=height,width=weight,fg_color="green",**kwargs)
+        super().__init__(parent,height=height,width=weight,**kwargs)
         
         self.pack_propagate(False)
 

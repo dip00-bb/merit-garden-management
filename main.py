@@ -1,5 +1,5 @@
 import customtkinter as ctk
-
+from PIL import ImageTk
 # models 
 from school_management_app.model import UserModel
 from school_management_app.model import SelectTaskModel
@@ -41,12 +41,12 @@ class App(ctk.CTk):
             screen_height,
             "merit_icon.png"
             )
-        
+        canvas_tkinter_image=ImageTk.PhotoImage(canvas_image)
         canvas=TkCanvas(
             self,
             screen_width,
             screen_height,
-            background_image=canvas_image
+            background_image=canvas_tkinter_image
             )
         canvas.pack(fill="both",expand=True)
         
