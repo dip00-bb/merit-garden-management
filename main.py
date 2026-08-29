@@ -8,6 +8,7 @@ from school_management_app.model import SelectTaskModel
 from school_management_app.components import TkCanvas
 from school_management_app.view import Login
 from school_management_app.view import SelectTask
+from school_management_app.view import StudentDashboard
 
 # controllers
 from school_management_app.controller import LoginController
@@ -29,7 +30,7 @@ class App(ctk.CTk):
         screen_height=self.winfo_screenheight()
 
         self.geometry(f"{screen_width}x{screen_height}")
-        self.resizable(False,False)
+        self.resizable(True,True)
 
         # title
         self.title("Merit Garden Girls School And College Management")
@@ -51,38 +52,49 @@ class App(ctk.CTk):
         
         #  login 
         
-        user_model=UserModel()
+        # user_model=UserModel()
     
-        self.login_view=Login(
-                parent=self,
-                width=400,
-                height=200,
-                )     
+        # self.login_view=Login(
+        #         parent=self,
+        #         width=400,
+        #         height=200,
+        #         )     
         
-        login_controller=LoginController(view=self.login_view,model=user_model,app=self)
-        self.login_view.set_controller(login_controller)
+        # login_controller=LoginController(view=self.login_view,model=user_model,app=self)
+        # self.login_view.set_controller(login_controller)
         
         def show_login():
             canvas.destroy()
-            self.login_view.pack(
-                    anchor="center",
-                    expand=True
-                ) 
+            # self.login_view.pack(
+            #         anchor="center",
+            #         expand=True
+            #     ) 
         canvas.after(2000,show_login)
         
 
         
         # select task
         
-        select_task_model=SelectTaskModel()
-        self.select_task_view=SelectTask(
-                parent=self,
-                width=500,
-                height=500
-            )
+        # select_task_model=SelectTaskModel()
+        # self.select_task_view=SelectTask(
+        #         parent=self,
+        #         width=500,
+        #         height=500
+        #     )
 
-        select_task_controller=SelectTaskController(view=self.select_task_view,model=select_task_model,app=self)
-        self.select_task_view.set_controller(select_task_controller)
+        # select_task_controller=SelectTaskController(view=self.select_task_view,model=select_task_model,app=self)
+        # self.select_task_view.set_controller(select_task_controller)
+
+        # dashboard
+
+        self.student_dashboard=StudentDashboard(
+            self,
+            height=screen_height,
+            weight=screen_width
+        )
+        self.student_dashboard.pack(
+            fill="both",expand=True
+        )
 
     def on_login_success(self):
         self.login_view.destroy()
