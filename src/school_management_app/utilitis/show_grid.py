@@ -1,6 +1,6 @@
-def show_grid(self,ctk):
-    for row in range(24):
-        for column in range(1):
+def show_grid(self,ctk,r,c):
+    for row in range(r):
+        for column in range(c):
 
             label = ctk.CTkLabel(
                 self,

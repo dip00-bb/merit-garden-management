@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from ...utilitis import grid_widget
-from ...utilitis import load_image_and_resize
-from ...utilitis import show_grid
+from ....utilitis import grid_widget
+from ....utilitis import load_image_and_resize
+from ....utilitis import show_grid
 
 image_list=[
         "attendance.png",
@@ -30,7 +30,7 @@ class StudentDashboardSidebar(ctk.CTkFrame):
         
         self.icons=[]
         for icon in image_list:
-            self.icon=load_image_and_resize(20,20,f"student_dashboard/{icon}")
+            self.icon=load_image_and_resize(20,20,f"student_dashboard/student_dashboard_sidebar/{icon}")
             
             self.task_icons=ctk.CTkImage(
                 light_image=self.icon,
@@ -77,26 +77,30 @@ class StudentDashboardSidebar(ctk.CTkFrame):
             
         }
         
+        
 
         for index , (key,value) in enumerate(task_dic.items()):
             
-            self.attendance_monitor=ctk.CTkButton(
+            self.sidebar_button=ctk.CTkButton(
                 master=self,
                 text=value["text"],
                 border_width=0,
                 corner_radius=5,
                 font=("Arial", 20),
                 image=value["img"],
-                command=lambda: print("Clicked!"),
                 compound="left",
-                anchor="w"
-        )
+                anchor="w",
+                command=lambda key=key : self.controller.get_selected_task(key)
+            )
             
             grid_widget(
-                entry=self.attendance_monitor,
+                entry=self.sidebar_button,
                 c=0,
                 r=index,
                 px=0,
                 py=2,
                 direction="nwes"
             )
+    def set_controller(self,controller):
+        self.controller=controller
+        
