@@ -18,7 +18,6 @@ class StudentDashboard(ctk.CTkFrame):
         super().__init__(parent,height=height,width=weight,**kwargs)
         
         self.pack_propagate(False)
-
         # frames
         self.attendance_frame=Attendance(
             self
@@ -41,6 +40,18 @@ class StudentDashboard(ctk.CTkFrame):
         self.show_result_frame=ShowResult(
             self
         )   
+        
+        self.current_frame=self.attendance_frame
+        grid_widget(
+            entry=self.attendance_frame,
+            c=1,
+            colspan=11,
+            r=0,
+            rowspan=24,
+            direction="nsew",
+            px=0,
+            py=0,
+        )
         
         for i in range(12):
             self.grid_columnconfigure(i,weight=1)
@@ -71,6 +82,10 @@ class StudentDashboard(ctk.CTkFrame):
      
     def attach_attendance_frame(self):    
         
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.attendance_frame
+        
         grid_widget(
             entry=self.attendance_frame,
             c=1,
@@ -84,6 +99,10 @@ class StudentDashboard(ctk.CTkFrame):
   
     def attach_school_result_monitor_frame(self):    
         
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.school_result_monitor_frame
+        
         grid_widget(
             entry=self.school_result_monitor_frame,
             c=1,
@@ -95,6 +114,10 @@ class StudentDashboard(ctk.CTkFrame):
             py=0,
         )
     def attach_board_result_monitor_frame(self):    
+        
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.board_result_monitor_frame
         
         grid_widget(
             entry=self.board_result_monitor_frame,
@@ -108,6 +131,10 @@ class StudentDashboard(ctk.CTkFrame):
         )
     def attach_admit_student_frame(self):    
         
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.admit_student_frame
+               
         grid_widget(
             entry=self.admit_student_frame,
             c=1,
@@ -120,6 +147,10 @@ class StudentDashboard(ctk.CTkFrame):
         )
   
     def attach_fees_management_frame(self):    
+
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.fees_management_frame        
         
         grid_widget(
             entry=self.fees_management_frame,
@@ -132,7 +163,9 @@ class StudentDashboard(ctk.CTkFrame):
             py=0,
         )
     def attach_result_management_frame(self):    
-        
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.result_management_frame           
         grid_widget(
             entry=self.result_management_frame,
             c=1,
@@ -144,6 +177,10 @@ class StudentDashboard(ctk.CTkFrame):
             py=0,
         ) 
     def attach_show_result_frame(self):    
+
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.show_result_frame          
         
         grid_widget(
             entry=self.show_result_frame,
