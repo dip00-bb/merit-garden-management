@@ -41,7 +41,14 @@ class StudentDashboard(ctk.CTkFrame):
             self
         )   
         
+                
+        for i in range(12):
+            self.grid_columnconfigure(i,weight=1)
+        for i in range (24):
+            self.grid_rowconfigure(i,weight=1)
+        
         self.current_frame=self.attendance_frame
+        
         grid_widget(
             entry=self.attendance_frame,
             c=1,
@@ -51,12 +58,7 @@ class StudentDashboard(ctk.CTkFrame):
             direction="nsew",
             px=0,
             py=0,
-        )
-        
-        for i in range(12):
-            self.grid_columnconfigure(i,weight=1)
-        for i in range (24):
-            self.grid_rowconfigure(i,weight=1)
+        )        
             
         # sidebar
         self.student_dashboard_model=StudentDashboardModel()

@@ -68,7 +68,7 @@ class App(ctk.CTk):
             # self.login_view.pack(
             #         anchor="center",
             #         expand=True
-            #     ) 
+            #     )  
         canvas.after(2000,show_login)
         
 
