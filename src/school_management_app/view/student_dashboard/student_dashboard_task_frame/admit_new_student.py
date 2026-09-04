@@ -23,6 +23,8 @@ class AdmitNewStudent(ctk.CTkFrame):
             "Rangpur",
             "Sylhet"
             ]   
+        self.blood_groups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+        self.religions = ["Islam", "Hinduism", "Buddhism", "Christianity"]
             
         # ------------------------------------------------------------ student personal information section -----------------------------------------------
         self.selected_gender=ctk.StringVar(value="male")
@@ -72,19 +74,19 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.student_present_division_label= ctk.CTkLabel(self,text="Division:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_present_division_label,c=0,r=6,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_present_division_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_present_division_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_present_division_option,c=1,r=6,colspan=2,rowspan=1,direction="we",px=5,py=0)
         
         self.student_present_district_label= ctk.CTkLabel(self,text="District:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_present_district_label,c=3,r=6,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_present_district_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_present_district_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_present_district_option,c=4,r=6,colspan=2,rowspan=1,direction="we",px=0,py=0)
                 
         self.student_present_upazila_label= ctk.CTkLabel(self,text="Upazila:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_present_upazila_label,c=6,r=6,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_present_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_present_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_present_upazila_option,c=7,r=6,colspan=2,rowspan=1,direction="we",px=0,py=0)
         
         
@@ -106,19 +108,19 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.student_permanent_division_label= ctk.CTkLabel(self,text="Division:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_permanent_division_label,c=0,r=9,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_permanent_division_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_permanent_division_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_permanent_division_option,c=1,r=9,colspan=2,rowspan=1,direction="we",px=5,py=0)
         
         self.student_permanent_district_label= ctk.CTkLabel(self,text="District:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_permanent_district_label,c=3,r=9,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_permanent_district_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_permanent_district_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_permanent_district_option,c=4,r=9,colspan=2,rowspan=1,direction="we",px=0,py=0)
                 
         self.student_permanent_upazila_label= ctk.CTkLabel(self,text="Upazila:",anchor="e",font=("Arial",20))
         grid_widget(entry=self.student_permanent_upazila_label,c=6,r=9,colspan=1,rowspan=1,direction="we",px=5,py=0) 
         
-        self.student_permanent_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions)
+        self.student_permanent_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_permanent_upazila_option,c=7,r=9,colspan=2,rowspan=1,direction="we",px=0,py=0)
         
         
@@ -128,4 +130,37 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.student_permanent_address_entry= ctk.CTkEntry(self,font=("Arial",20))
         grid_widget(entry=self.student_permanent_address_entry,c=1,r=10,colspan=8,rowspan=1,direction="we",px=0,py=0)
         
+# ------------------------------------------------------------ student contact and other information -----------------------------------------------        
+
+        self.contact_and_other_information_section_label= ctk.CTkLabel(self,text="Student Contact And Other Information",anchor="w",font=("Arial",20))
+        grid_widget(entry=self.contact_and_other_information_section_label,c=0,r=11,colspan=8,rowspan=1,direction="we",px=40,py=0)  
+
+        self.student_phone_number_label=ctk.CTkLabel(self,text="Phone Number:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_phone_number_label,c=0,r=12,colspan=1,rowspan=1,direction="we",px=5,py=0)
         
+        self.student_phone_number_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_phone_number_entry,c=1,r=12,colspan=4,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_whatsapp_number_label=ctk.CTkLabel(self,text="Whatsapp Number:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_whatsapp_number_label,c=5,r=12,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_whatsapp_number_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_whatsapp_number_entry,c=6,r=12,colspan=3,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_email_label=ctk.CTkLabel(self,text="Email:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_email_label,c=0,r=13,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_email_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_email_entry,c=1,r=13,colspan=4,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_blood_group_label=ctk.CTkLabel(self,text="Blood Group:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_blood_group_label,c=5,r=13,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_blood_group_option=ctk.CTkOptionMenu(self,values= self.blood_groups,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_blood_group_option,c=6,r=13,colspan=3,rowspan=1,direction="we",px=5,py=0)
+
+        self.student_religion_label=ctk.CTkLabel(self,text="Religion:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_religion_label,c=0,r=14,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_religion_option=ctk.CTkOptionMenu(self,values= self.religions,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_religion_option,c=1,r=14,colspan=4,rowspan=1,direction="we",px=5,py=0)
