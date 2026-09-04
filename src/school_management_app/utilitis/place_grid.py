@@ -6,7 +6,10 @@ def grid_widget(
                 px,
                 direction="ew",
                 colspan=1,
-                rowspan=1):
+                rowspan=1,
+                ipadx=0,
+                ipady=0
+                ):
     entry.grid(
         row=r, 
         column=c,
@@ -14,6 +17,8 @@ def grid_widget(
         padx=px,
         sticky=direction,
         columnspan=colspan,
-        rowspan=rowspan
+        rowspan=rowspan,
+        ipadx=ipadx,
+        ipady=ipady
     )
     
