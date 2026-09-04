@@ -7,7 +7,7 @@ class AdmitNewStudent(ctk.CTkFrame):
         
         for i in range(12):
             self.grid_columnconfigure(i,weight=1)
-        for i in range(42):
+        for i in range(24):
             self.grid_rowconfigure(i,weight=1)
         
         # show_grid(self=self,ctk=ctk,c=12,r=24)
@@ -25,7 +25,11 @@ class AdmitNewStudent(ctk.CTkFrame):
             ]   
         self.blood_groups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
         self.religions = ["Islam", "Hinduism", "Buddhism", "Christianity"]
-            
+        
+        self.classes=["1","2","3","4","5","6","7","8","9","10"]
+        self.groups=["Science","Arts","Commerce"]
+        self.optional_subject=["Higher Math","Agriculture","Biology"]    
+        
         # ------------------------------------------------------------ student personal information section -----------------------------------------------
         self.selected_gender=ctk.StringVar(value="male")
         
@@ -164,3 +168,32 @@ class AdmitNewStudent(ctk.CTkFrame):
         
         self.student_religion_option=ctk.CTkOptionMenu(self,values= self.religions,dropdown_font=("Arial", 18),font=("Arial", 18))
         grid_widget(entry=self.student_religion_option,c=1,r=14,colspan=4,rowspan=1,direction="we",px=5,py=0)
+
+
+# ------------------------------------------------------------ student admission information -----------------------------------------------                
+        self.student_admission_form_label= ctk.CTkLabel(self,text="Student Admission Information",anchor="w",font=("Arial",20))
+        grid_widget(entry=self.student_admission_form_label,c=0,r=15,colspan=8,rowspan=1,direction="we",px=40,py=0)  
+        
+        self.student_admitted_class_label=ctk.CTkLabel(self,text="Which Class Wanted To Be Admitted:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_admitted_class_label,c=0,r=16,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_religion_option=ctk.CTkOptionMenu(self,values= self.classes,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_religion_option,c=1,r=16,colspan=4,rowspan=1,direction="we",px=5,py=0)        
+        
+        self.student_admitted_group_label=ctk.CTkLabel(self,text="Group:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_admitted_group_label,c=5,r=16,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_group_option=ctk.CTkOptionMenu(self,values= self.groups,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_group_option,c=6,r=16,colspan=3,rowspan=1,direction="we",px=5,py=0)  
+        
+        self.student_optional_subject_label=ctk.CTkLabel(self,text="Optional Subject:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_optional_subject_label,c=0,r=17,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_optional_subject_option=ctk.CTkOptionMenu(self,values= self.optional_subject,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_optional_subject_option,c=1,r=17,colspan=4,rowspan=1,direction="we",px=5,py=0)  
+        
+        self.student_previous_school_name_label=ctk.CTkLabel(self,text="Previous School Name:",anchor="e",font=("Arial",20))
+        grid_widget(entry=self.student_previous_school_name_label,c=5,r=17,colspan=1,rowspan=1,direction="we",px=5,py=0)
+        
+        self.student_previous_school_name_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_previous_school_name_entry,c=6,r=17,colspan=3,rowspan=1,direction="we",px=5,py=0)          
