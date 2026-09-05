@@ -12,13 +12,7 @@ class AdmitNewStudent(ctk.CTkFrame):
     def __init__ (self,parent,**kwargs):
         super().__init__(parent,**kwargs) 
         
-        # for i in range(1):
-        #     self.grid_columnconfigure(i,weight=1)
-        # for i in range(5):
-        #     self.grid_rowconfigure(i,weight=1)
-        
-        # show_grid(self=self,ctk=ctk,c=12,r=24)
-        # division option:
+
 
         self.pack_propagate(False)
         
