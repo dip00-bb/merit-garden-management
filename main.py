@@ -29,6 +29,7 @@ class App(ctk.CTk):
         screen_width=self.winfo_screenwidth()
         screen_height=self.winfo_screenheight()
 
+        # self.geometry("200x200")
         self.geometry(f"{screen_width}x{screen_height}")
         self.resizable(True,True)
 
@@ -39,7 +40,7 @@ class App(ctk.CTk):
         canvas_image=load_image_and_resize(
             screen_width,
             screen_height,
-            "merit_icon.png"
+            "school_result_monitor.png"
             )
         canvas_tkinter_image=ImageTk.PhotoImage(canvas_image)
         canvas=TkCanvas(

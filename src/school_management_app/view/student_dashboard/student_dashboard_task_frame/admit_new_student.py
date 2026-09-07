@@ -5,7 +5,6 @@ from ....utilitis import show_grid
 from ....components import PersonalInformation
 from ....components import PresentAddress
 from ....components import PermanentAddress
-from ....components import ContactInformation
 from ....components import AdmissionInformation
 
 class AdmitNewStudent(ctk.CTkFrame):
@@ -25,9 +24,10 @@ class AdmitNewStudent(ctk.CTkFrame):
         # ------------------------------------------------------------ student permanent address -----------------------------------------------
         self.student_permanent_address=PermanentAddress(self)
         self.student_permanent_address.pack(fill="both",expand=True)
-        # ------------------------------------------------------------ student contact and other information -----------------------------------------------        
-        self.contact_information=ContactInformation(self)
-        self.contact_information.pack(fill="both",expand=True)
         # ------------------------------------------------------------ student admission information -----------------------------------------------                
         self.admission_information=AdmissionInformation(self)
         self.admission_information.pack(fill="both",expand=True)     
+        # ------------------------------------------------------------ submit button -----------------------------------------------
+        self.submit_information=ctk.CTkButton(self,text="Add Student")
+        self.submit_information.pack(ipadx=10,ipady=10)
+           

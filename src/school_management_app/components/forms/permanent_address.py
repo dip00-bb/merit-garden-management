@@ -24,10 +24,10 @@ class PermanentAddress(ctk.CTkFrame):
         
         
         self.permanent_address_section_label= ctk.CTkLabel(self,text="Permanent Address",anchor="center",font=("Arial",20),bg_color=heading_color,text_color=heading_text_color)
-        grid_widget(entry=self.permanent_address_section_label,c=0,r=0,colspan=5,rowspan=1,direction="we",px=0,py=10)  
+        grid_widget(entry=self.permanent_address_section_label,c=1,r=0,colspan=8,rowspan=1,direction="we",px=0,py=10)  
         
-        self.permanent_present_same_check= ctk.CTkCheckBox(self,text="Same As Present",font=("Arial",20),text_color=text_color)
-        grid_widget(entry=self.permanent_present_same_check,c=5,r=0,colspan=8,rowspan=1,direction="e",px=320,py=10)   
+        # self.permanent_present_same_check= ctk.CTkCheckBox(self,text="Same As Present",font=("Arial",20),text_color=text_color)
+        # grid_widget(entry=self.permanent_present_same_check,c=5,r=0,colspan=8,rowspan=1,direction="e",px=320,py=10)   
          
         self.student_permanent_division_label= ctk.CTkLabel(self,text="Division:",anchor="e",font=("Arial",20),text_color=text_color)
         grid_widget(entry=self.student_permanent_division_label,c=0,r=1,colspan=1,rowspan=1,direction="we",px=5,py=10) 

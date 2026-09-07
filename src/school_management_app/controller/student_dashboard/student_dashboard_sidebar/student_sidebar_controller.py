@@ -5,7 +5,6 @@ class StudentDashboardController:
             self.app=app
         
         def get_selected_task(self,key="attendance"):
-            print(key)
             selected_task=self.model.check_task(key)
             
             if(selected_task=="attendance"):

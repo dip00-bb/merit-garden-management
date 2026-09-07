@@ -8,8 +8,11 @@ class PersonalInformation(ctk.CTkFrame):
         
         for i in range(12):
             self.grid_columnconfigure(i,weight=1)
-        for i in range (4):
+        for i in range (8):
             self.grid_rowconfigure(i,weight=1)
+            
+        self.blood_groups=["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+        self.religions=["Islam", "Hinduism", "Buddhism", "Christianity", "Other"]
             
             
         self.selected_gender=ctk.StringVar(value="male")
@@ -49,3 +52,33 @@ class PersonalInformation(ctk.CTkFrame):
         
         self.student_gender_female_radio_button= ctk.CTkRadioButton(self,text="Female",value="female",variable=self.selected_gender)
         grid_widget(entry=self.student_gender_female_radio_button,c=7,r=4,colspan=1,rowspan=1,direction="we",px=0,py=10) 
+        
+        self.student_phone_number_label=ctk.CTkLabel(self,text="Phone Number:",anchor="e",font=("Arial",20),text_color=text_color)
+        grid_widget(entry=self.student_phone_number_label,c=0,r=5,colspan=1,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_phone_number_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_phone_number_entry,c=1,r=5,colspan=4,rowspan=1,direction="we",px=5,py=10,ipadx=0,ipady=5)
+        
+        self.student_whatsapp_number_label=ctk.CTkLabel(self,text="Whatsapp Number:",anchor="e",font=("Arial",20),text_color=text_color)
+        grid_widget(entry=self.student_whatsapp_number_label,c=5,r=5,colspan=1,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_whatsapp_number_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_whatsapp_number_entry,c=6,r=5,colspan=3,rowspan=1,direction="we",px=5,py=10,ipadx=0,ipady=5)
+        
+        self.student_email_label=ctk.CTkLabel(self,text="Email:",anchor="e",font=("Arial",20),text_color=text_color)
+        grid_widget(entry=self.student_email_label,c=0,r=6,colspan=1,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_email_entry=ctk.CTkEntry(self,font=("Arial",20))
+        grid_widget(entry=self.student_email_entry,c=1,r=6,colspan=4,rowspan=1,direction="we",px=5,py=10,ipadx=0,ipady=5)
+        
+        self.student_blood_group_label=ctk.CTkLabel(self,text="Blood Group:",anchor="e",font=("Arial",20),text_color=text_color)
+        grid_widget(entry=self.student_blood_group_label,c=5,r=6,colspan=1,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_blood_group_option=ctk.CTkOptionMenu(self,values= self.blood_groups,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_blood_group_option,c=6,r=6,colspan=3,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_religion_label=ctk.CTkLabel(self,text="Religion:",anchor="e",font=("Arial",20),text_color=text_color)
+        grid_widget(entry=self.student_religion_label,c=0,r=7,colspan=1,rowspan=1,direction="we",px=5,py=10)
+        
+        self.student_religion_option=ctk.CTkOptionMenu(self,values= self.religions,dropdown_font=("Arial", 18),font=("Arial", 18))
+        grid_widget(entry=self.student_religion_option,c=1,r=7,colspan=4,rowspan=1,direction="we",px=5,py=10)
