@@ -22,7 +22,7 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.student_present_address=PresentAddress(self)
         self.student_present_address.pack(fill="both",expand=True)
         # ------------------------------------------------------------ student permanent address -----------------------------------------------
-        self.student_permanent_address=PermanentAddress(self)
+        self.student_permanent_address=PermanentAddress(self,present_address_component=self.student_present_address)
         self.student_permanent_address.pack(fill="both",expand=True)
         # ------------------------------------------------------------ student admission information -----------------------------------------------                
         self.admission_information=AdmissionInformation(self)
