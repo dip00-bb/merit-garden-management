@@ -1,3 +1,4 @@
 from .login_controller import LoginController
 from .select_task_controller import SelectTaskController
 from .student_dashboard.student_dashboard_sidebar.student_sidebar_controller import StudentDashboardController
+from .student_dashboard.admit_student.admit_student_controller import AdmitStudentController
