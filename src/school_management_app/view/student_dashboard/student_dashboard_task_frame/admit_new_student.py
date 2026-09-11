@@ -52,5 +52,5 @@ class AdmitNewStudent(ctk.CTkFrame):
 
 
 
-        self.submit_information.configure(command=admit_student_controller.collect_personal_information)
+        self.submit_information.configure(command=admit_student_controller.collect_student_information_and_save)
            

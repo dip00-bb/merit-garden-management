@@ -10,7 +10,7 @@ class AdmitStudentController:
         self.submit_button=submit_button
         self.model=model
         
-    def collect_personal_information(self):
+    def collect_student_information_and_save(self):
         
         # student personal information
         student_name=self.personal_information.student_name_entry.get()
@@ -31,7 +31,13 @@ class AdmitStudentController:
         present_address=self.present_information.student_present_address_entry.get()
         
 
+        # student admission information
+        to_admit=self.admission_information.student_admitted_class_option.get()
+        group=self.admission_information.student_group_option.get()
+        opt_sub=self.admission_information.student_optional_subject_option.get()
+        previous_school=self.admission_information.student_previous_school_name_entry.get()
         
+      
                 
         # set personal information to model
         
@@ -54,6 +60,7 @@ class AdmitStudentController:
         self.model.present_address=present_address
        
        
+        # set student permanent address information
         if (self.model.same_as_present):
             self.model.permanent_division=present_division
             self.model.permanent_district=present_district
@@ -71,9 +78,16 @@ class AdmitStudentController:
             self.model.permanent_district=permanent_district
             self.model.permanent_upazila=permanent_upazila
             self.model.permanent_address=permanent_address  
-            
-            
-            
+        
+        
+        # set admission information 
+        self.model.to_admit=to_admit
+        self.model.group=group
+        self.model.opt_sub=opt_sub
+        self.model.previous_school=previous_school            
+        
+        
+        
                
     # function of present address
             
