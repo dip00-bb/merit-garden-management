@@ -75,44 +75,7 @@ class AdmitStudentController:
             
             
                
-    def collect_present_information(self):
-        print(self.model.student_name)
-    
-    def collect_permanent_information():
-        pass 
-    
-    def collect_admission_information():
-        pass 
-    
-    def mark_same_as_present(self):
-        check_box_state=self.permanent_information.check_var.get()
-
-        
-        if(check_box_state=="on"):
-            self.model.same_as_present=True
-            
-            self.permanent_information.student_permanent_division_option.set(self.present_information.student_present_division_option.get())
-            self.permanent_information.student_permanent_district_option.set(self.present_information.student_present_district_option.get())
-            self.permanent_information.student_permanent_upazila_option.set(self.present_information.student_present_upazila_option.get())
-            self.permanent_information.student_permanent_address_entry.insert(0,self.present_information.student_present_address_entry.get())        
-            
-            
-            
-            self.permanent_information.student_permanent_division_option.configure(state="disabled")   
-            self.permanent_information.student_permanent_district_option.configure(state="disabled")
-            self.permanent_information.student_permanent_upazila_option.configure(state="disabled")
-            self.permanent_information.student_permanent_address_entry.configure(state="disabled")
-            
-        else:
-            
-            self.model.same_as_present=False
-            
-            self.permanent_information.student_permanent_division_option.configure(state="enabled")   
-            self.permanent_information.student_permanent_address_entry.configure(state="normal")
-            self.permanent_information.student_permanent_address_entry.delete(0,"end")
-            self.permanent_information.student_permanent_division_option.set("Division")
-            self.permanent_information.student_permanent_district_option.set("District")
-            self.permanent_information.student_permanent_upazila_option.set("Upazila")
+    # function of present address
             
     def on_division_change(self,chosen_division):
         self.present_information.selected_division=chosen_division
@@ -156,7 +119,45 @@ class AdmitStudentController:
             self.permanent_information.student_permanent_address_entry.configure(state="disabled")
             
             
+    # function of permanent address
+
+    def mark_same_as_present(self):
+        check_box_state=self.permanent_information.check_var.get()
+
+        
+        if(check_box_state=="on"):
+            self.model.same_as_present=True
+            
+            self.permanent_information.student_permanent_division_option.set(self.present_information.student_present_division_option.get())
+            self.permanent_information.student_permanent_district_option.set(self.present_information.student_present_district_option.get())
+            self.permanent_information.student_permanent_upazila_option.set(self.present_information.student_present_upazila_option.get())
+            self.permanent_information.student_permanent_address_entry.insert(0,self.present_information.student_present_address_entry.get())        
             
             
             
+            self.permanent_information.student_permanent_division_option.configure(state="disabled")   
+            self.permanent_information.student_permanent_district_option.configure(state="disabled")
+            self.permanent_information.student_permanent_upazila_option.configure(state="disabled")
+            self.permanent_information.student_permanent_address_entry.configure(state="disabled")
             
+        else:
+            
+            self.model.same_as_present=False
+            
+            self.permanent_information.student_permanent_division_option.configure(state="enabled")   
+            self.permanent_information.student_permanent_address_entry.configure(state="normal")
+            self.permanent_information.student_permanent_address_entry.delete(0,"end")
+            self.permanent_information.student_permanent_division_option.set("Division")
+            self.permanent_information.student_permanent_district_option.set("District")
+            self.permanent_information.student_permanent_upazila_option.set("Upazila")
+    
+    def on_permanent_division_change(self,chosen_division):
+        self.permanent_information.selected_division=chosen_division
+        self.permanent_information.student_permanent_district_option.set("District")
+        self.permanent_information.student_permanent_district_option.configure(values=list(bangladesh[chosen_division].keys()),state="enabled")                    
+            
+            
+    def on_permanent_district_change (self,chosen_district):       
+        
+        self.permanent_information.student_permanent_upazila_option.set("Upazila")
+        self.permanent_information.student_permanent_upazila_option.configure(values=list(bangladesh[self.permanent_information.selected_division][chosen_district]),state="enabled")   

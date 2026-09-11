@@ -45,20 +45,20 @@ class PermanentAddress(ctk.CTkFrame):
         self.student_permanent_division_label= ctk.CTkLabel(self,text="Division:",anchor="e",font=("Arial",20),text_color=text_color)
         grid_widget(entry=self.student_permanent_division_label,c=0,r=1,colspan=1,rowspan=1,direction="we",px=5,py=10) 
         
-        self.student_permanent_division_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),variable=self.value_of_permanent_division,command=self.on_division_change,font=("Arial", 18))
+        self.student_permanent_division_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),variable=self.value_of_permanent_division,font=("Arial", 18))
         grid_widget(entry=self.student_permanent_division_option,c=1,r=1,colspan=2,rowspan=1,direction="we",px=5,py=10)
         self.student_permanent_division_option.set("Division")
         
         self.student_permanent_district_label= ctk.CTkLabel(self,text="District:",anchor="e",font=("Arial",20),text_color=text_color)
         grid_widget(entry=self.student_permanent_district_label,c=3,r=1,colspan=1,rowspan=1,direction="we",px=5,py=10) 
         
-        self.student_permanent_district_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),variable=self.value_of_permanent_district,command=self.on_district_change,font=("Arial", 18),state="disabled")
+        self.student_permanent_district_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),variable=self.value_of_permanent_district,font=("Arial", 18),state="disabled")
         grid_widget(entry=self.student_permanent_district_option,c=4,r=1,colspan=2,rowspan=1,direction="we",px=0,py=10)
         self.student_permanent_district_option.set("District")        
         self.student_permanent_upazila_label= ctk.CTkLabel(self,text="Upazila:",anchor="e",font=("Arial",20),text_color=text_color)
         grid_widget(entry=self.student_permanent_upazila_label,c=6,r=1,colspan=1,rowspan=1,direction="we",px=5,py=10) 
         
-        self.student_permanent_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18),command=self.on_upazila_change, font=("Arial", 18),variable=self.value_of_permanent_upazila,state="disabled")
+        self.student_permanent_upazila_option= ctk.CTkOptionMenu(self,values= self.divisions,dropdown_font=("Arial", 18), font=("Arial", 18),variable=self.value_of_permanent_upazila,state="disabled")
         grid_widget(entry=self.student_permanent_upazila_option,c=7,r=1,colspan=2,rowspan=1,direction="we",px=0,py=10)
         self.student_permanent_upazila_option.set("Upazila")
         
@@ -71,21 +71,11 @@ class PermanentAddress(ctk.CTkFrame):
         self.mark_same_as_present=ctk.CTkCheckBox(self,text="Same As Present",variable=self.check_var,offvalue="off",onvalue="on")
         grid_widget(entry=self.mark_same_as_present,c=1,r=3,colspan=1,rowspan=1,direction="we",px=0,py=10,ipadx=0,ipady=5)
         
-    def on_division_change(self,chosen_division):
-        self.selected_division=chosen_division
-        self.student_permanent_district_option.set("District")
-        self.student_permanent_district_option.configure(values=list(bangladesh[chosen_division].keys()),state="enabled")
-        
-    def on_district_change(self,chosen_district):
-        self.student_permanent_upazila_option.set("Upazila")
-        self.student_permanent_upazila_option.configure(values=list(bangladesh[self.selected_division][chosen_district]),state="enabled")    
-        
-    def on_upazila_change(self,choosen_upazila):
-        print( self.value_of_permanent_division.get())
-        print( self.value_of_permanent_district.get())
-        print(self.value_of_permanent_upazila.get())
+
         
 
     def set_controller(self,controller):
         self.controller=controller
+        self.student_permanent_division_option.configure(command=controller.on_permanent_division_change)
+        self.student_permanent_district_option.configure(command=controller.on_permanent_district_change)
         self.mark_same_as_present.configure(command=controller.mark_same_as_present)
