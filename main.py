@@ -1,3 +1,4 @@
+import sqlite3
 import customtkinter as ctk
 from PIL import ImageTk
 # models 
@@ -18,6 +19,14 @@ from school_management_app.controller import SelectTaskController
 from school_management_app.utilitis import load_image_and_resize
 
 
+# database
+from school_management_app.database import Database
+# repository
+
+from school_management_app.database import StudentRepository
+
+# schema
+from school_management_app.database import STUDENT_SCHEMA 
 
 
 
@@ -25,6 +34,28 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
+        # database
+        database=Database()
+        connection=None
+        
+        
+        try:
+            connection=database.connect()
+            cursor=connection.cursor()
+            cursor.execute(STUDENT_SCHEMA )
+            
+            print("Table created")
+            
+            connection.commit()
+        except sqlite3.Error as e:
+            print("Error",e)
+        
+        
+            
+        # repository
+        self.student_repo=StudentRepository(database)
+        
+        
         # screen size
         screen_width=self.winfo_screenwidth()
         screen_height=self.winfo_screenheight()
@@ -91,7 +122,8 @@ class App(ctk.CTk):
         self.student_dashboard=StudentDashboard(
             self,
             height=screen_height,
-            weight=screen_width
+            weight=screen_width,
+            student_repo=self.student_repo
         )
         self.student_dashboard.pack(
             fill="both",expand=True

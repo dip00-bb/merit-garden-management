@@ -7,17 +7,15 @@ from ....components import PresentAddress
 from ....components import PermanentAddress
 from ....components import AdmissionInformation
 from ....controller import AdmitStudentController
-from ....model import AdmitStudentModel
 
 class AdmitNewStudent(ctk.CTkFrame):
-    def __init__ (self,parent,**kwargs):
+    def __init__ (self,parent,student_repo,**kwargs):
         super().__init__(parent,**kwargs) 
         
 
         self.controller=None
         self.pack_propagate(False)
-        self.student_permanent_address=""
-        
+        self.student_repo=student_repo
         
         
         # ------------------------------------------------------------ student personal information section -----------------------------------------------
@@ -36,7 +34,7 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.submit_information=ctk.CTkButton(self,text="Add Student")
         self.submit_information.pack(ipadx=10,ipady=10)
         
-        self.admit_student_model=AdmitStudentModel()
+        
         admit_student_controller=AdmitStudentController(
             
             personal_information=self.student_personal_information,
@@ -44,7 +42,7 @@ class AdmitNewStudent(ctk.CTkFrame):
             permanent_information=self.student_permanent_address,
             admission_information=self.admission_information,
             submit_button=self.submit_information,
-            model=self.admit_student_model
+            student_repo=self.student_repo
             )
            
         self.student_permanent_address.set_controller(admit_student_controller)

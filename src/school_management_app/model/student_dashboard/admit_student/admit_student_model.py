@@ -1,39 +1,72 @@
+
 class AdmitStudentModel:
-    
-    # state of same as present
-    same_as_present=False
-    
-    # personal information
-    student_name=""
-    mother_name=""
-    father_name=""
-    date_of_birth=""
-    gender=""
-    phone_number=""
-    whats_app_number=""
-    email=""
-    blood_group=""
-    religion=""
-    
-    # present address
-    
-    present_division=""
-    present_district=""
-    present_upazila=""
-    present_address=""
-    
-    # permanent address
-    
-    permanent_division=""
-    permanent_district=""
-    permanent_upazila=""
-    permanent_address=""
-    
-    # admission information 
-    
-    to_admit=""
-    group=""
-    opt_sub=""
-    previous_school=""
-    
-    
+
+    def __init__(
+        self,
+        student_name="",
+        mother_name="",
+        father_name="",
+        date_of_birth="",
+        gender="",
+        phone_number="",
+        whats_app_number="",
+        email="",
+        blood_group="",
+        religion="",
+
+        present_division="",
+        present_district="",
+        present_upazila="",
+        present_address="",
+
+        permanent_division="",
+        permanent_district="",
+        permanent_upazila="",
+        permanent_address="",
+
+        to_admit="",
+        group_name="",
+        opt_sub="",
+        previous_school=""
+    ):
+        # ---------------------------------
+        # Personal Information
+        # ---------------------------------
+        
+        self.student_name = student_name
+        self.mother_name = mother_name
+        self.father_name = father_name
+        self.date_of_birth = date_of_birth
+        self.gender = gender
+        self.phone_number = phone_number
+        self.whats_app_number = whats_app_number
+        self.email = email
+        self.blood_group = blood_group
+        self.religion = religion
+
+        # ---------------------------------
+        # Present Address
+        # ---------------------------------
+
+        self.present_division = present_division
+        self.present_district = present_district
+        self.present_upazila = present_upazila
+        self.present_address = present_address
+
+        # ---------------------------------
+        # Permanent Address
+        # ---------------------------------
+
+        self.permanent_division = permanent_division
+        self.permanent_district = permanent_district
+        self.permanent_upazila = permanent_upazila
+        self.permanent_address = permanent_address
+
+        # ---------------------------------
+        # Admission Information
+        # ---------------------------------
+
+        self.to_admit = to_admit
+        self.group_name = group_name
+        self.opt_sub = opt_sub
+        self.previous_school = previous_school

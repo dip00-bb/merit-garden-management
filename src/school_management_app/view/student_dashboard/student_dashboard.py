@@ -14,9 +14,10 @@ from ...controller import StudentDashboardController
 from ...model import StudentDashboardModel
 
 class StudentDashboard(ctk.CTkFrame):
-    def __init__(self,parent,height,weight,**kwargs):
+    def __init__(self,parent,height,weight,student_repo,**kwargs):
         super().__init__(parent,height=height,width=weight,**kwargs)
         
+        self.student_repo=student_repo
         self.pack_propagate(False)
         # frames
         self.attendance_frame=Attendance(
@@ -29,7 +30,8 @@ class StudentDashboard(ctk.CTkFrame):
             self
         )
         self.admit_student_frame=AdmitNewStudent(
-            self
+            self,
+            student_repo=self.student_repo
         )
         self.fees_management_frame=FeesManagement(
             self
@@ -40,6 +42,7 @@ class StudentDashboard(ctk.CTkFrame):
         self.show_result_frame=ShowResult(
             self
         )   
+        
         
                 
         for i in range(12):

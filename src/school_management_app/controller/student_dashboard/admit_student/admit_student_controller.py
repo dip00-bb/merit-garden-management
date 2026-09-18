@@ -1,14 +1,21 @@
 from ....utilitis import bangladesh
+from ....model import AdmitStudentModel
 
 class AdmitStudentController:
-    def __init__(self,personal_information,present_information,permanent_information,admission_information,submit_button,model):
+    def __init__(self,personal_information,
+                 present_information,
+                 permanent_information,
+                 admission_information,
+                 submit_button,
+                 student_repo):
         
+        self.same_as_present=False
         self.personal_information=personal_information
         self.present_information=present_information
         self.permanent_information=permanent_information
         self.admission_information=admission_information
         self.submit_button=submit_button
-        self.model=model
+        self.student_repo=student_repo
         
     def collect_student_information_and_save(self):
         
@@ -37,35 +44,20 @@ class AdmitStudentController:
         opt_sub=self.admission_information.student_optional_subject_option.get()
         previous_school=self.admission_information.student_previous_school_name_entry.get()
         
-      
-                
-        # set personal information to model
+        # permanent division
         
-        self.model.student_name=student_name
-        self.model.mother_name=mother_name
-        self.model.father_name=father_name
-        self.model.date_of_birth=date_of_birth
-        self.model.gender=gender
-        self.model.phone_number=phone_number
-        self.model.whats_app_number=whats_app_number
-        self.model.email=email
-        self.model.blood_group=blood_group
-        self.model.religion=religion
+        permanent_division=""
+        permanent_district=""
+        permanent_upazila=""
+        permanent_address=""
         
-        # set present address information to model 
         
-        self.model.present_division=present_division
-        self.model.present_district=present_district
-        self.model.present_upazila=present_upazila
-        self.model.present_address=present_address
-       
-       
         # set student permanent address information
-        if (self.model.same_as_present):
-            self.model.permanent_division=present_division
-            self.model.permanent_district=present_district
-            self.model.permanent_upazila=present_upazila
-            self.model.permanent_address=present_address
+        if (self.same_as_present):
+            permanent_division=present_division
+            permanent_district=present_district
+            permanent_upazila=present_upazila
+            permanent_address=present_address
         else:
             
             # student permanent address information
@@ -74,19 +66,41 @@ class AdmitStudentController:
             permanent_upazila=self.permanent_information.student_permanent_upazila_option.get()
             permanent_address=self.permanent_information.student_permanent_address_entry.get()
             
-            self.model.permanent_division=permanent_division
-            self.model.permanent_district=permanent_district
-            self.model.permanent_upazila=permanent_upazila
-            self.model.permanent_address=permanent_address  
+
         
         
-        # set admission information 
-        self.model.to_admit=to_admit
-        self.model.group=group
-        self.model.opt_sub=opt_sub
-        self.model.previous_school=previous_school            
+        student_model = AdmitStudentModel(
+            student_name=student_name,
+            mother_name=mother_name,
+            father_name=father_name,
+            date_of_birth=date_of_birth,
+            gender=gender,
+            phone_number=phone_number,
+            whats_app_number=whats_app_number,
+            email=email,
+            blood_group=blood_group,
+            religion=religion,
+
+            present_division=present_address,
+            present_district=present_district,
+            present_upazila=present_upazila,
+            present_address=present_address,
+
+            permanent_division=permanent_address,
+            permanent_district=permanent_district,
+            permanent_upazila=permanent_upazila,
+            permanent_address=permanent_address,
+
+            to_admit=to_admit,
+            group_name=group,
+            opt_sub=opt_sub,
+            previous_school=previous_school
+        )
         
-        
+        print(student_model.previous_school)
+        self.student_repo.create_student(
+            student_model
+        )
         
                
     # function of present address
@@ -107,7 +121,7 @@ class AdmitStudentController:
         
         # sync with permanent if same as present are marked
         
-        if(self.model.same_as_present):
+        if(self.same_as_present):
             self.permanent_information.student_permanent_division_option.set(chosen_division)
         
     
@@ -115,17 +129,17 @@ class AdmitStudentController:
         self.present_information.student_present_upazila_option.set("Upazila")
         self.present_information.student_present_upazila_option.configure(values=list(bangladesh[self.present_information.selected_division][chosen_district]),state="enabled") 
 
-        if(self.model.same_as_present):
+        if(self.same_as_present):
             self.permanent_information.student_permanent_district_option.set(chosen_district)
     
     
     def on_upazila_change(self,selected_upazila):
 
-        if(self.model.same_as_present):
+        if(self.same_as_present):
             self.permanent_information.student_permanent_upazila_option.set(selected_upazila)
     
     def on_address_field_focus_out(self,x=""):
-        if(self.model.same_as_present):
+        if(self.same_as_present):
             present_address=self.present_information.value_of_present_address.get()
             self.permanent_information.student_permanent_address_entry.configure(state="normal")
             self.permanent_information.student_permanent_address_entry.delete(0,"end")
@@ -140,7 +154,7 @@ class AdmitStudentController:
 
         
         if(check_box_state=="on"):
-            self.model.same_as_present=True
+            self.same_as_present=True
             
             self.permanent_information.student_permanent_division_option.set(self.present_information.student_present_division_option.get())
             self.permanent_information.student_permanent_district_option.set(self.present_information.student_present_district_option.get())
@@ -156,7 +170,7 @@ class AdmitStudentController:
             
         else:
             
-            self.model.same_as_present=False
+            self.same_as_present=False
             
             self.permanent_information.student_permanent_division_option.configure(state="enabled")   
             self.permanent_information.student_permanent_address_entry.configure(state="normal")
