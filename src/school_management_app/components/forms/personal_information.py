@@ -2,6 +2,7 @@ import customtkinter as ctk
 from ...utilitis import grid_widget,show_grid
 from ...utilitis import heading_color,text_color,heading_text_color
 
+
 class PersonalInformation(ctk.CTkFrame):
     def __init__(self,parent,**kwargs):
         super().__init__(parent,**kwargs)

@@ -1,3 +1,4 @@
+import datetime 
 def check_valid_name(
     field,
     field_name,
@@ -19,4 +20,10 @@ def check_valid_name(
         )
     
     
-    
+def is_valid_us_date(date_string):
+    try:
+        # %m = month, %d = day, %Y = 4-digit year
+        datetime.strptime(date_string, "%m/%d/%Y")
+        return True
+    except ValueError:
+        return False

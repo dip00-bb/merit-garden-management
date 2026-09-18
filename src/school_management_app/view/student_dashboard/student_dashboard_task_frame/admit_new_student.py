@@ -7,7 +7,7 @@ from ....components import PresentAddress
 from ....components import PermanentAddress
 from ....components import AdmissionInformation
 from ....controller import AdmitStudentController
-
+from CTkMessagebox import CTkMessagebox
 class AdmitNewStudent(ctk.CTkFrame):
     def __init__ (self,parent,student_repo,**kwargs):
         super().__init__(parent,**kwargs) 
@@ -36,7 +36,7 @@ class AdmitNewStudent(ctk.CTkFrame):
         
         
         admit_student_controller=AdmitStudentController(
-            
+            information_field_parent=self,
             personal_information=self.student_personal_information,
             present_information=self.student_present_address,
             permanent_information=self.student_permanent_address,
@@ -51,4 +51,11 @@ class AdmitNewStudent(ctk.CTkFrame):
 
 
         self.submit_information.configure(command=admit_student_controller.collect_student_information_and_save)
-           
+        
+    def show_error(self,message):
+        self.error_message=CTkMessagebox(self,title="Error",message=message,icon="cancel")
+        screen_x = self.winfo_screenmmwidth()
+        screen_y = self.winfo_screenheight()/3
+        
+        print(screen_x,screen_y)
+        self.error_message.geometry(f"+{screen_x}+{screen_y}")            

@@ -2,7 +2,9 @@ from ....utilitis import bangladesh
 from ....model import AdmitStudentModel
 
 class AdmitStudentController:
-    def __init__(self,personal_information,
+    def __init__(self,
+                 information_field_parent,
+                 personal_information,
                  present_information,
                  permanent_information,
                  admission_information,
@@ -16,6 +18,7 @@ class AdmitStudentController:
         self.admission_information=admission_information
         self.submit_button=submit_button
         self.student_repo=student_repo
+        self.information_field_parent=information_field_parent
         
     def collect_student_information_and_save(self):
         
@@ -68,35 +71,37 @@ class AdmitStudentController:
             
 
         
-        
-        student_model = AdmitStudentModel(
-            student_name=student_name,
-            mother_name=mother_name,
-            father_name=father_name,
-            date_of_birth=date_of_birth,
-            gender=gender,
-            phone_number=phone_number,
-            whats_app_number=whats_app_number,
-            email=email,
-            blood_group=blood_group,
-            religion=religion,
+        try:
+            student_model = AdmitStudentModel(
+                student_name=student_name,
+                mother_name=mother_name,
+                father_name=father_name,
+                date_of_birth=date_of_birth,
+                gender=gender,
+                phone_number=phone_number,
+                whats_app_number=whats_app_number,
+                email=email,
+                blood_group=blood_group,
+                religion=religion,
 
-            present_division=present_address,
-            present_district=present_district,
-            present_upazila=present_upazila,
-            present_address=present_address,
+                present_division=present_address,
+                present_district=present_district,
+                present_upazila=present_upazila,
+                present_address=present_address,
 
-            permanent_division=permanent_address,
-            permanent_district=permanent_district,
-            permanent_upazila=permanent_upazila,
-            permanent_address=permanent_address,
+                permanent_division=permanent_address,
+                permanent_district=permanent_district,
+                permanent_upazila=permanent_upazila,
+                permanent_address=permanent_address,
 
-            to_admit=to_admit,
-            group_name=group,
-            opt_sub=opt_sub,
-            previous_school=previous_school
-        )
-        
+                to_admit=to_admit,
+                group_name=group,
+                opt_sub=opt_sub,
+                previous_school=previous_school
+            )
+        except:
+            self.information_field_parent.show_error("In Valid Name")
+            return
 
         self.student_repo.create_student(
             student_model
