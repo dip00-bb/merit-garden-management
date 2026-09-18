@@ -20,7 +20,6 @@ class Database:
                 check_same_thread=False
             )
             
-            print("DB PATH:", self.db_path.resolve())
 
 
             self.connection.row_factory = sqlite3.Row

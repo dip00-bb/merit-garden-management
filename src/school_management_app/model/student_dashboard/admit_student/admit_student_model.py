@@ -1,4 +1,4 @@
-
+from ....utilitis import check_valid_name
 class AdmitStudentModel:
 
     def __init__(
@@ -33,6 +33,12 @@ class AdmitStudentModel:
         # Personal Information
         # ---------------------------------
         
+        check_valid_name(student_name,"Student Name",3,15)
+        check_valid_name(mother_name,"Student Name",3,15)
+        check_valid_name(father_name,"Student Name",3,15)        
+  
+        
+        
         self.student_name = student_name
         self.mother_name = mother_name
         self.father_name = father_name
@@ -47,7 +53,10 @@ class AdmitStudentModel:
         # ---------------------------------
         # Present Address
         # ---------------------------------
+                
 
+
+        
         self.present_division = present_division
         self.present_district = present_district
         self.present_upazila = present_upazila

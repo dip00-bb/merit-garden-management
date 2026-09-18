@@ -72,9 +72,7 @@ class StudentRepository:
             student.opt_sub,
             student.previous_school,
         )
-
-        print(params)
-            
+        print(params)    
         self.cursor.execute(query, params)
         self.connection.commit()
 

@@ -7,4 +7,4 @@ from .shared_colors import heading_color,heading_text_color,text_color
 # places
 from .places.places import bangladesh
 
-
+from .input_error import check_valid_name

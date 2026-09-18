@@ -44,7 +44,6 @@ class App(ctk.CTk):
             cursor=connection.cursor()
             cursor.execute(STUDENT_SCHEMA )
             
-            print("Table created")
             
             connection.commit()
         except sqlite3.Error as e:

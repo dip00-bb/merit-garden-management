@@ -97,7 +97,7 @@ class AdmitStudentController:
             previous_school=previous_school
         )
         
-        print(student_model.previous_school)
+
         self.student_repo.create_student(
             student_model
         )
