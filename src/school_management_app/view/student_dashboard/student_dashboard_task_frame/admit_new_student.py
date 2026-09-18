@@ -37,10 +37,6 @@ class AdmitNewStudent(ctk.CTkFrame):
         
         admit_student_controller=AdmitStudentController(
             information_field_parent=self,
-            personal_information=self.student_personal_information,
-            present_information=self.student_present_address,
-            permanent_information=self.student_permanent_address,
-            admission_information=self.admission_information,
             submit_button=self.submit_information,
             student_repo=self.student_repo
             )
