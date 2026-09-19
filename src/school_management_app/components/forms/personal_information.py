@@ -52,7 +52,10 @@ class PersonalInformation(ctk.CTkFrame):
         grid_widget(entry=self.student_gender_male_radio_button,c=5,r=4,colspan=1,rowspan=1,direction="we",px=0,py=10)
         
         self.student_gender_female_radio_button= ctk.CTkRadioButton(self,text="Female",value="female",variable=self.selected_gender)
-        grid_widget(entry=self.student_gender_female_radio_button,c=7,r=4,colspan=1,rowspan=1,direction="we",px=0,py=10) 
+        grid_widget(entry=self.student_gender_female_radio_button,c=6,r=4,colspan=1,rowspan=1,direction="we",px=0,py=10) 
+        
+        self.student_gender_intersex_radio_button= ctk.CTkRadioButton(self,text="Intersex",value="intersex",variable=self.selected_gender)
+        grid_widget(entry=self.student_gender_intersex_radio_button,c=7,r=4,colspan=1,rowspan=1,direction="we",px=0,py=10) 
         
         self.student_phone_number_label=ctk.CTkLabel(self,text="Phone Number:",anchor="e",font=("Arial",20),text_color=text_color)
         grid_widget(entry=self.student_phone_number_label,c=0,r=5,colspan=1,rowspan=1,direction="we",px=5,py=10)

@@ -1,4 +1,5 @@
 import datetime 
+from email_validator import validate_email, EmailNotValidError
 def check_valid_name(
     field,
     field_name,
@@ -57,3 +58,36 @@ def validate_bd_number(phone_number: str) -> bool:
 
     return True
         
+
+def validate_gender(gender: str) -> bool:
+    """Validates that the input gender is strictly 'male', 'female', or 'intersex'.
+    
+    Raises ValueError if the input does not match these criteria.
+    """
+    # Define the allowed lowercase categories
+    valid_genders = ["male", "female", "intersex"]
+
+    # Check if the input perfectly matches one of the valid options
+    if gender in valid_genders:
+        is_valid = True
+    else:
+        is_valid = False
+
+    # Raise an error with explicit criteria if validation fails
+    if not is_valid:
+        raise ValueError(
+            f"Invalid gender input: '{gender}'.\n"
+            "The gender must follow these criteria:\n"
+            "- Must be provided completely in lower case.\n"
+            "- Must be exactly one of these options: 'male', 'female', or 'intersex'."
+        )
+
+    return True
+
+
+def email_validator(email):
+    try:
+        validate_email(email)
+    except:
+        raise EmailNotValidError 
+    

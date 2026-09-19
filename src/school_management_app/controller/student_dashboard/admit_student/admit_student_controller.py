@@ -1,6 +1,6 @@
 from ....utilitis import bangladesh
 from ....model import AdmitStudentModel
-
+from email_validator import EmailNotValidError
 class AdmitStudentController:
     def __init__(self,
                  information_field_parent,
@@ -95,12 +95,11 @@ class AdmitStudentController:
                 group_name=group,
                 opt_sub=opt_sub,
                 previous_school=previous_school
-            )
+            )    
         except ValueError as e:
             error_msg= str(e)
             self.information_field_parent.show_error(error_msg)
             return
-
         self.student_repo.create_student(
             student_model
         )
