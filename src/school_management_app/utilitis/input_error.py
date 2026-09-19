@@ -90,4 +90,56 @@ def email_validator(email):
         validate_email(email)
     except:
         raise EmailNotValidError 
+
+def validate_blood_group(blood_group: str) -> bool:
+    """Validates that the input is a valid blood group.
     
+    Raises ValueError if the input is not in the allowed list.
+    """
+    blood_groups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+    
+    # Remove any accidental spaces
+    clean_bg = blood_group.strip()
+
+    if clean_bg in blood_groups:
+        is_valid = True
+    else:
+        is_valid = False
+
+    if not is_valid:
+        # Formats the list into a clean string for the error message
+        allowed_options = ", ".join(blood_groups)
+        raise ValueError(
+            f"Invalid blood group: '{blood_group}'.\n"
+            "The blood group must match one of these criteria:\n"
+            f"- Must be exactly one of these options: {allowed_options}."
+        )
+
+    return True
+
+
+def validate_religion(religion: str) -> bool:
+    """Validates that the input is a valid religion category.
+    
+    Raises ValueError if the input is not in the allowed list.
+    """
+    religions = ["Islam", "Hinduism", "Buddhism", "Christianity", "Atheist", "Other"]
+    
+    # Remove any accidental spaces
+    clean_religion = religion.strip()
+
+    if clean_religion in religions:
+        is_valid = True
+    else:
+        is_valid = False
+
+    if not is_valid:
+        # Formats the list into a clean string for the error message
+        allowed_options = ", ".join(religions)
+        raise ValueError(
+            f"Invalid religion: '{religion}'.\n"
+            "The religion must match one of these criteria:\n"
+            f"- Must match the exact capitalization of these options: {allowed_options}."
+        )
+
+    return True

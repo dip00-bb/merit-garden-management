@@ -1,4 +1,4 @@
-from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number,validate_gender,validate_email
+from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number,validate_gender,validate_email,validate_blood_group,validate_religion
 class AdmitStudentModel:
 
     def __init__(
@@ -40,7 +40,9 @@ class AdmitStudentModel:
         validate_gender(gender)
         # validate_bd_number(phone_number)
         # validate_bd_number(whats_app_number)
-        validate_email(email)
+        # validate_email(email)
+        validate_blood_group(blood_group)
+        validate_religion(religion)
         
         self.student_name = student_name
         self.mother_name = mother_name

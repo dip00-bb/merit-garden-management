@@ -13,7 +13,7 @@ class PersonalInformation(ctk.CTkFrame):
             self.grid_rowconfigure(i,weight=1)
             
         self.blood_groups=["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
-        self.religions=["Islam", "Hinduism", "Buddhism", "Christianity", "Other"]
+        self.religions=["Islam", "Hinduism", "Buddhism", "Christianity","Atheist","Other"]
             
             
         self.selected_gender=ctk.StringVar(value="male")
