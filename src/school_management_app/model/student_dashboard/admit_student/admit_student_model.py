@@ -1,5 +1,4 @@
-from ....utilitis import check_valid_name
-from ....utilitis import is_valid_us_date
+from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number
 class AdmitStudentModel:
 
     def __init__(
@@ -38,7 +37,8 @@ class AdmitStudentModel:
         check_valid_name(mother_name,"Mother Name",3,15)
         check_valid_name(father_name,"Father Name",3,15)        
         is_valid_us_date(date_of_birth)
-        
+        validate_bd_number(phone_number)
+        validate_bd_number(whats_app_number)
         
         self.student_name = student_name
         self.mother_name = mother_name

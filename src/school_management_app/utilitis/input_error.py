@@ -26,3 +26,34 @@ def is_valid_us_date(date_string):
         raise ValueError (
             f"Provide Date In Month/Date/Year format"
         )
+        
+def validate_bd_number(phone_number: str) -> bool:
+    """Validates if a phone number is a 11-digit Bangladeshi mobile number starting with 01.
+    
+    Raises ValueError if criteria are not met.
+    """
+    # Remove any accidental leading/trailing whitespace
+    clean_number = phone_number.strip()
+
+    # Check all conditions in a clean if-else structure
+    if not clean_number.isdigit():
+        is_valid = False
+    elif not clean_number.startswith("01"):
+        is_valid = False
+    elif len(clean_number) != 11:
+        is_valid = False
+    else:
+        is_valid = True
+
+    # Raise an error with the specific criteria if validation fails
+    if not is_valid:
+        raise ValueError(
+            f"Invalid phone number: '{phone_number}'.\n"
+            "A valid number must follow these criteria:\n"
+            "- Must consist only of numbers (digits 0-9).\n"
+            "- Must start exactly with '01'.\n"
+            "- Must be exactly 11 digits long."
+        )
+
+    return True
+        
