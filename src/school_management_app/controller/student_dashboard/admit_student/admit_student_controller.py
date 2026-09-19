@@ -95,8 +95,9 @@ class AdmitStudentController:
                 opt_sub=opt_sub,
                 previous_school=previous_school
             )
-        except:
-            self.information_field_parent.show_error("In Valid Name")
+        except ValueError as e:
+            error_msg= str(e)
+            self.information_field_parent.show_error(error_msg)
             return
 
         self.student_repo.create_student(

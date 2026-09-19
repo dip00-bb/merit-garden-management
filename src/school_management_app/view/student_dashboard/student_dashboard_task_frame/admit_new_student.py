@@ -53,5 +53,4 @@ class AdmitNewStudent(ctk.CTkFrame):
         screen_x = self.winfo_screenmmwidth()
         screen_y = self.winfo_screenheight()/3
         
-        print(screen_x,screen_y)
         self.error_message.geometry(f"+{screen_x}+{screen_y}")            
