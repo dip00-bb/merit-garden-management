@@ -16,6 +16,7 @@ class AdmitStudentController:
         self.student_present_address=self.information_field_parent.student_present_address
         self.student_permanent=self.information_field_parent.student_permanent_address
         self.student_admission_information=self.information_field_parent.admission_information
+        
     def collect_student_information_and_save(self):
         
         # student personal information
