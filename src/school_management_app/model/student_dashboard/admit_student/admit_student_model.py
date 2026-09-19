@@ -41,8 +41,7 @@ class AdmitStudentModel:
         # validate_bd_number(phone_number)
         # validate_bd_number(whats_app_number)
         # validate_email(email)
-        validate_blood_group(blood_group)
-        validate_religion(religion)
+
         
         self.student_name = student_name
         self.mother_name = mother_name
