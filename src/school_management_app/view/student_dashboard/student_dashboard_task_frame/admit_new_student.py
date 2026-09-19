@@ -6,6 +6,7 @@ from ....components import PersonalInformation
 from ....components import PresentAddress
 from ....components import PermanentAddress
 from ....components import AdmissionInformation
+# from ....components import ImageUpload
 from ....controller import AdmitStudentController
 from CTkMessagebox import CTkMessagebox
 class AdmitNewStudent(ctk.CTkFrame):
@@ -17,7 +18,9 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.pack_propagate(False)
         self.student_repo=student_repo
         
-        
+        # ------------------------------------------------------------ student image section -----------------------------------------------
+        # self.student_image=ImageUpload(self)
+        # self.student_image.pack()
         # ------------------------------------------------------------ student personal information section -----------------------------------------------
         self.student_personal_information=PersonalInformation(self)
         self.student_personal_information.pack(fill="both",expand=True)

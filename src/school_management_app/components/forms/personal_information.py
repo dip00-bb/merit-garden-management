@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from ...utilitis import grid_widget,show_grid
 from ...utilitis import heading_color,text_color,heading_text_color
-
+from ...components.forms.image_upload import ImageUpload
 
 class PersonalInformation(ctk.CTkFrame):
     def __init__(self,parent,**kwargs):
@@ -17,6 +17,9 @@ class PersonalInformation(ctk.CTkFrame):
             
             
         self.selected_gender=ctk.StringVar(value="male")
+        
+        self.student_image=ImageUpload(self)
+        grid_widget(entry= self.student_image,c=12,r=0,colspan=1,rowspan=3,direction="we",px=10,py=0)
         
         self.personal_information_label= ctk.CTkLabel(self,text="Personal Information",anchor="center",font=("Arial",20),bg_color=heading_color,text_color=heading_text_color)
         grid_widget(entry=self.personal_information_label,c=1,r=0,colspan=8,rowspan=1,direction="we",px=0,py=10)  
