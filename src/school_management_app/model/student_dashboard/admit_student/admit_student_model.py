@@ -1,4 +1,4 @@
-from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number,validate_gender,validate_email,validate_blood_group,validate_religion
+from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number,validate_gender,validate_email
 class AdmitStudentModel:
 
     def __init__(
@@ -41,8 +41,10 @@ class AdmitStudentModel:
         # validate_bd_number(phone_number)
         # validate_bd_number(whats_app_number)
         # validate_email(email)
-
-        
+        check_valid_name(present_address,"Present Address",10,250)
+        check_valid_name(permanent_address,"Permanent Address",10,250)
+        check_valid_name(previous_school,"Previous School",10,250)
+               
         self.student_name = student_name
         self.mother_name = mother_name
         self.father_name = father_name
