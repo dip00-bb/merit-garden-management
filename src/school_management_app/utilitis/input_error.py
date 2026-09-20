@@ -65,3 +65,15 @@ def email_validator(email):
         validate_email(email)
     except:
         raise EmailNotValidError 
+
+def validate_image(image_data):
+
+    if len(image_data)<=0:
+        raise ValueError(
+            f"Image field can not be empty"
+        )
+        
+    if type(image_data) is not bytes:
+        raise ValueError(
+            f"It is not a valid Image"
+        )
