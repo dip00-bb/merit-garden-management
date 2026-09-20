@@ -7,6 +7,9 @@ class ImageUpload(ctk.CTkFrame):
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
         
+        # binary image data
+        
+        self.image_data=""
 
         # Initialize the label without text so it remains invisible until an image is loaded
         self.image_label = ctk.CTkLabel(self, text="",width=100,height=100,bg_color="red")
@@ -35,7 +38,7 @@ class ImageUpload(ctk.CTkFrame):
         max_height = 100
         
         blob_image_data=image_to_binary(file_path)
-        print(len(blob_image_data))
+        self.image_data=blob_image_data
         # 3. Create the CTkImage using the safe, full-view dimensions
         photo = ctk.CTkImage(
             light_image=raw_image, 

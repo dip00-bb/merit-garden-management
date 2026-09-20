@@ -21,7 +21,7 @@ class AdmitStudentController:
         
         # student personal information
         student_name=self.student_personal_information.student_name_entry.get()
-        student_image=self.student_personal_information.student_image.uploaded_image
+        student_image=self.student_personal_information.student_image.image_data
         mother_name=self.student_personal_information.student_mother_name_entry.get()
         father_name=self.student_personal_information.student_father_name_entry.get()
         date_of_birth=self.student_personal_information.date_of_birth_entry.get()

@@ -12,6 +12,7 @@ class StudentRepository:
         query = """
             INSERT INTO students (
                 student_name,
+                student_image,
                 mother_name,
                 father_name,
                 date_of_birth,
@@ -38,7 +39,7 @@ class StudentRepository:
                 previous_school
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
                 ?, ?, ?, ?,
                 ?, ?, ?, ?,
                 ?, ?, ?, ?
@@ -47,6 +48,7 @@ class StudentRepository:
 
         params = (
             student.student_name,
+            student.student_image,
             student.mother_name,
             student.father_name,
             student.date_of_birth,
@@ -70,9 +72,9 @@ class StudentRepository:
             student.to_admit,
             student.group_name,
             student.opt_sub,
-            student.previous_school,
+            student.previous_school
         )
-        print(params)    
+   
         self.cursor.execute(query, params)
         self.connection.commit()
 
