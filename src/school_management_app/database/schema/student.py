@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS students (
 
     -- Personal Information
     student_name TEXT NOT NULL,
+    student_image BLOB NOT NULL,
     mother_name TEXT,
     father_name TEXT,
     date_of_birth TEXT,

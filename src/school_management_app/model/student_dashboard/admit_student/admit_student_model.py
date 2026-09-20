@@ -4,6 +4,7 @@ class AdmitStudentModel:
     def __init__(
         self,
         student_name="",
+        student_image="",
         mother_name="",
         father_name="",
         date_of_birth="",
@@ -45,6 +46,8 @@ class AdmitStudentModel:
         check_valid_name(previous_school,"Previous School",10,250)
                
         self.student_name = student_name
+        self.student_image=student_image
+        print(self.student_image)
         self.mother_name = mother_name
         self.father_name = father_name
         self.date_of_birth = date_of_birth
