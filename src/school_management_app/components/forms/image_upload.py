@@ -2,7 +2,7 @@ import customtkinter as ctk
 import tkinter as tk
 from tkinter import filedialog
 from PIL import Image
-
+from ...utilitis import image_to_binary
 class ImageUpload(ctk.CTkFrame):
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
@@ -25,24 +25,17 @@ class ImageUpload(ctk.CTkFrame):
             self.display_image(file_path)
             self.image_path=file_path
             
-    def convert_to_binary_data(self,filename):
-        """Converts a human-readable file into binary format."""
-        print("path is::",filename)
-        with open(filename, 'rb') as file:
-            blob_data = file.read()
-        return blob_data
-            
+  
     def display_image(self, file_path):
         print(file_path)
         # 1. Open the original image using PIL
         raw_image = Image.open(file_path)
-
         # 2. Define the maximum allowed passport-size boundaries
         max_width = 100
         max_height = 100
         
-        blob_image_data=self.convert_to_binary_data(file_path)
-        
+        blob_image_data=image_to_binary(file_path)
+        print(len(blob_image_data))
         # 3. Create the CTkImage using the safe, full-view dimensions
         photo = ctk.CTkImage(
             light_image=raw_image, 
