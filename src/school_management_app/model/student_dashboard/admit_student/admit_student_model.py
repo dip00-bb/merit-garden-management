@@ -1,4 +1,5 @@
 from ....utilitis import check_valid_name,is_valid_us_date,validate_bd_number,validate_email,validate_image
+import datetime
 class AdmitStudentModel:
 
     def __init__(
@@ -35,16 +36,16 @@ class AdmitStudentModel:
         # ---------------------------------
         
         # check_valid_name(student_name,"Student Name",3,15)
-        validate_image(student_image)
+        # validate_image(student_image)
         # check_valid_name(mother_name,"Mother Name",3,15)
         # check_valid_name(father_name,"Father Name",3,15)        
         # is_valid_us_date(date_of_birth)
         # validate_bd_number(phone_number)
         # validate_bd_number(whats_app_number)
         # validate_email(email)
-        check_valid_name(present_address,"Present Address",10,250)
-        check_valid_name(permanent_address,"Permanent Address",10,250)
-        check_valid_name(previous_school,"Previous School",10,250)
+        # check_valid_name(present_address,"Present Address",10,250)
+        # check_valid_name(permanent_address,"Permanent Address",10,250)
+        # check_valid_name(previous_school,"Previous School",10,250)
                
         self.student_name = student_name
         self.student_image=student_image
@@ -61,7 +62,7 @@ class AdmitStudentModel:
         # ---------------------------------
         # Present Address
         # ---------------------------------
-                
+        
 
 
         
@@ -84,6 +85,15 @@ class AdmitStudentModel:
         # ---------------------------------
 
         self.to_admit = to_admit
+        self.current_class=to_admit  # set current_class where he is admitted
         self.group_name = group_name
         self.opt_sub = opt_sub
         self.previous_school = previous_school
+        
+        
+        # ---------------------------------
+        # Student Status And Admitted Year
+        # --------------------------------
+        self.admitted_year=datetime.datetime.now().year
+        self.academic_year=self.admitted_year
+        self.student_status="Studying"

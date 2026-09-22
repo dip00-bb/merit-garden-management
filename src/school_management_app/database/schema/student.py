@@ -29,10 +29,18 @@ CREATE TABLE IF NOT EXISTS students (
 
     -- Admission Information
     to_admit TEXT,
+    current_class TEXT,
+    class_roll TEXT,
     group_name TEXT,
     optional_subject TEXT,
     previous_school TEXT,
 
+    -- Student Status And Admitted Year
+    admitted_year TEXT,
+    academic_year TEXT,
+    student_status TEXT,
+    
+    
     -- System Information
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     updated_at TEXT DEFAULT CURRENT_TIMESTAMP

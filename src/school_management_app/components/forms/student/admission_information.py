@@ -46,6 +46,8 @@ class AdmissionInformation(ctk.CTkFrame):
         self.student_previous_school_name_entry=ctk.CTkEntry(self,font=("Arial",20))
         grid_widget(entry=self.student_previous_school_name_entry,c=6,r=2,colspan=3,rowspan=1,direction="we",px=5,py=10,ipadx=0,ipady=5)      
         
+        
+        
     def on_to_admit_class_change(self,selected_class):
         if ( int(selected_class) > 8):
             self.student_group_option.configure(state="enabled",values=self.groups)

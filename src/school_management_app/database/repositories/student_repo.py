@@ -34,17 +34,39 @@ class StudentRepository:
                 permanent_address,
 
                 to_admit,
+                current_class,
+                class_roll,
                 group_name,
                 optional_subject,
-                previous_school
+                previous_school,
+                
+                admitted_year,
+                academic_year,
+                student_status
+
+                
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                ?, ?, ?, ?, 
+                ?, ?, ?, ?,  
+                ?, ?, ?, ?,
+                ?, ?, ?, ?,
                 ?, ?, ?, ?,
                 ?, ?, ?, ?,
                 ?, ?, ?, ?
             )
         """
+        
+        roll_query = """
+        SELECT COALESCE(MAX(CAST(class_roll AS INTEGER)), 0) + 1
+        FROM students
+        WHERE academic_year = ?
+        AND to_admit = ?
+            """
+        class_roll=  self.cursor.execute(roll_query,(
+            student.academic_year,student.to_admit
+        )).fetchone()[0]
+        
 
         params = (
             student.student_name,
@@ -70,13 +92,23 @@ class StudentRepository:
             student.permanent_address,
 
             student.to_admit,
+            student.current_class,    
+            class_roll,        
             student.group_name,
             student.opt_sub,
-            student.previous_school
+            student.previous_school,
+            
+            
+            student.admitted_year,
+            student.academic_year,
+            student.student_status,
+
         )
-   
+
         self.cursor.execute(query, params)
         self.connection.commit()
+
+
 
     # ---------------------------------------------------------
     # READ - GET ONE STUDENT
