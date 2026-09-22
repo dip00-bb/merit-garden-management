@@ -29,7 +29,9 @@ class AdmitStudentModel:
         to_admit="",
         group_name="",
         opt_sub="",
-        previous_school=""
+        previous_school="",
+        admission_fee="",
+        monthly_fee=""
     ):
         # ---------------------------------
         # Personal Information
@@ -87,6 +89,8 @@ class AdmitStudentModel:
         self.to_admit = to_admit
         self.current_class=to_admit  # set current_class where he is admitted
         self.group_name = group_name
+        self.admission_fee=admission_fee
+        self.monthly_fee=monthly_fee
         self.opt_sub = opt_sub
         self.previous_school = previous_school
         

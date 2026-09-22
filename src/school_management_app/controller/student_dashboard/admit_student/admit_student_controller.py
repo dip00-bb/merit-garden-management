@@ -40,11 +40,12 @@ class AdmitStudentController:
         
 
         # student admission information
+        previous_school=self.student_admission_information.student_previous_school_name_entry.get()
         to_admit=self.student_admission_information.student_admitted_class_option.get()
         group=self.student_admission_information.student_group_option.get()
         opt_sub=self.student_admission_information.student_optional_subject_option.get()
-        previous_school=self.student_admission_information.student_previous_school_name_entry.get()
-        
+        admission_fee=self.student_admission_information.student_admission_fee_entry.get()
+        monthly_fee=self.student_admission_information.student_monthly_fee_entry.get()
         # permanent division
         
         permanent_division=""
@@ -94,9 +95,11 @@ class AdmitStudentController:
                 permanent_address=permanent_address,
 
                 to_admit=to_admit,
+                previous_school=previous_school,                
                 group_name=group,
                 opt_sub=opt_sub,
-                previous_school=previous_school
+                admission_fee=admission_fee,
+                monthly_fee=monthly_fee
             )    
         except ValueError as e:
             error_msg= str(e)

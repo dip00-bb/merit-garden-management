@@ -17,24 +17,28 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.controller=None
         self.pack_propagate(False)
         self.student_repo=student_repo
-        
+
+        # ------------------------------------------------------------ scrollable container -----------------------------------------------
+        self.scrollable_container=ctk.CTkScrollableFrame(self)
+        self.scrollable_container.pack(fill="both",expand=True)
+
         # ------------------------------------------------------------ student image section -----------------------------------------------
-        # self.student_image=ImageUpload(self)
+        # self.student_image=ImageUpload(self.scrollable_container)
         # self.student_image.pack()
         # ------------------------------------------------------------ student personal information section -----------------------------------------------
-        self.student_personal_information=PersonalInformation(self)
+        self.student_personal_information=PersonalInformation(self.scrollable_container)
         self.student_personal_information.pack(fill="both",expand=True)
          # ------------------------------------------------------------ student present address -----------------------------------------------
-        self.student_present_address=PresentAddress(self)
+        self.student_present_address=PresentAddress(self.scrollable_container)
         self.student_present_address.pack(fill="both",expand=True)
         # ------------------------------------------------------------ student permanent address -----------------------------------------------
-        self.student_permanent_address=PermanentAddress(self)
+        self.student_permanent_address=PermanentAddress(self.scrollable_container)
         self.student_permanent_address.pack(fill="both",expand=True)
         # ------------------------------------------------------------ student admission information -----------------------------------------------                
-        self.admission_information=AdmissionInformation(self)
+        self.admission_information=AdmissionInformation(self.scrollable_container)
         self.admission_information.pack(fill="both",expand=True)     
         # ------------------------------------------------------------ submit button -----------------------------------------------
-        self.submit_information=ctk.CTkButton(self,text="Add Student")
+        self.submit_information=ctk.CTkButton(self.scrollable_container,text="Add Student")
         self.submit_information.pack(ipadx=10,ipady=10)
         
         
@@ -56,4 +60,4 @@ class AdmitNewStudent(ctk.CTkFrame):
         screen_x = self.winfo_screenmmwidth()
         screen_y = self.winfo_screenheight()/3
         
-        self.error_message.geometry(f"+{screen_x}+{screen_y}")            
+        self.error_message.geometry(f"+{screen_x}+{screen_y}")

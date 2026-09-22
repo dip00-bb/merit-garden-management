@@ -35,6 +35,8 @@ class StudentRepository:
 
                 to_admit,
                 current_class,
+                admission_fee,
+                monthly_fee,
                 class_roll,
                 group_name,
                 optional_subject,
@@ -53,7 +55,9 @@ class StudentRepository:
                 ?, ?, ?, ?,
                 ?, ?, ?, ?,
                 ?, ?, ?, ?,
-                ?, ?, ?, ?
+                ?, ?, ?, ?,
+                ?,?
+            
             )
         """
         
@@ -93,6 +97,8 @@ class StudentRepository:
 
             student.to_admit,
             student.current_class,    
+            student.admission_fee,
+            student.monthly_fee,
             class_roll,        
             student.group_name,
             student.opt_sub,
@@ -104,7 +110,6 @@ class StudentRepository:
             student.student_status,
 
         )
-
         self.cursor.execute(query, params)
         self.connection.commit()
 

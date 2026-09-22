@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS students (
     -- Admission Information
     to_admit TEXT,
     current_class TEXT,
+    admission_fee TEXT,
+    monthly_fee TEXT,
     class_roll TEXT,
     group_name TEXT,
     optional_subject TEXT,

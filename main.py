@@ -42,7 +42,11 @@ class App(ctk.CTk):
         try:
             connection=database.connect()
             cursor=connection.cursor()
+            
+
             cursor.execute(STUDENT_SCHEMA )
+            
+            
             connection.commit()
         except sqlite3.Error as e:
             print("Error",e)
