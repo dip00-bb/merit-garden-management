@@ -46,7 +46,6 @@ class App(ctk.CTk):
 
             cursor.execute(STUDENT_SCHEMA )
             
-            
             connection.commit()
         except sqlite3.Error as e:
             print("Error",e)

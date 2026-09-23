@@ -1,6 +1,6 @@
 STUDENT_SCHEMA = """
 CREATE TABLE IF NOT EXISTS students (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    student_id INTEGER PRIMARY KEY AUTOINCREMENT,
 
     -- Personal Information
     student_name TEXT NOT NULL,
