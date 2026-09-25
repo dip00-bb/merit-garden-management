@@ -19,6 +19,13 @@ class StudentDashboard(ctk.CTkFrame):
         
         self.student_repo=student_repo
         self.pack_propagate(False)
+        
+        for i in range(12):
+            self.grid_columnconfigure(i,weight=1)
+        for i in range (24):
+            self.grid_rowconfigure(i,weight=1)        
+        
+        
         # frames
         self.attendance_frame=Attendance(
             self
@@ -45,10 +52,7 @@ class StudentDashboard(ctk.CTkFrame):
         
         
                 
-        for i in range(12):
-            self.grid_columnconfigure(i,weight=1)
-        for i in range (24):
-            self.grid_rowconfigure(i,weight=1)
+
         
         self.current_frame=self.attendance_frame
         
@@ -82,7 +86,10 @@ class StudentDashboard(ctk.CTkFrame):
             px=0,
             py=0,
             direction="nsew"
-        )        
+        )
+        
+        
+                
     # attaching frames with dashboard
      
     def attach_attendance_frame(self):    
