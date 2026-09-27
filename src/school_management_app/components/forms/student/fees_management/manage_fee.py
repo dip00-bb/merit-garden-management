@@ -43,8 +43,8 @@ class ManageFee(ctk.CTkFrame):
             fg_color="transparent",
             corner_radius=0
         )
-        table_frame.pack(fill="x")
 
+        table_frame.pack_forget()
 
         # Make every column the same width
         for column in range(len(label_specs)):
@@ -110,3 +110,5 @@ class ManageFee(ctk.CTkFrame):
 
             
             grid_widget(entry=status_label, r=2, c=column, colspan=1, rowspan=1, direction="ew", px=0, py=0)            
+            
+        table_frame.pack(fill="x")
