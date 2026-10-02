@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from .....utilitis import grid_widget
+from ...utilitis import grid_widget
 
 class ManageFee(ctk.CTkFrame):
     def __init__(self, parent, **kwargs):

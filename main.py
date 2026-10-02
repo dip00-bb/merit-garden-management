@@ -26,6 +26,11 @@ from school_management_app.database import Database
 from school_management_app.database import StudentRepository
 from school_management_app.database import FeesRepository
 
+# model
+
+from school_management_app.model import AdmitStudentModel
+from school_management_app.model import FeesModel
+
 # schema
 from school_management_app.database import STUDENT_SCHEMA,STUDENT_FEE
 
@@ -57,6 +62,10 @@ class App(ctk.CTk):
         self.student_repo=StudentRepository(database)
         self.fee_repo=FeesRepository(database)
         
+        # models
+        self.admit_student_model=AdmitStudentModel
+        self.fees_model=FeesModel
+        
         # screen size
         screen_width=self.winfo_screenwidth()
         screen_height=self.winfo_screenheight()
@@ -68,64 +77,19 @@ class App(ctk.CTk):
         # title
         self.title("Merit Garden Girls School And College Management")
 
-        # welcome canvas
-        canvas_image=load_image_and_resize(
-            screen_width,
-            screen_height,
-            "school_result_monitor.png"
-            )
-        canvas_tkinter_image=ImageTk.PhotoImage(canvas_image)
-        canvas=TkCanvas(
-            self,
-            screen_width,
-            screen_height,
-            background_image=canvas_tkinter_image
-            )
-        canvas.pack(fill="both",expand=True)
         
-        #  login 
-        
-        # user_model=UserModel()
     
-        # self.login_view=Login(
-        #         parent=self,
-        #         width=400,
-        #         height=200,
-        #         )     
         
-        # login_controller=LoginController(view=self.login_view,model=user_model,app=self)
-        # self.login_view.set_controller(login_controller)
-        
-        def show_login():
-            canvas.destroy()
-            # self.login_view.pack(
-            #         anchor="center",
-            #         expand=True
-            #     )  
-        canvas.after(2000,show_login)
-        
-
-        
-        # select task
-        
-        # select_task_model=SelectTaskModel()
-        # self.select_task_view=SelectTask(
-        #         parent=self,
-        #         width=500,
-        #         height=500
-        #     )
-
-        # select_task_controller=SelectTaskController(view=self.select_task_view,model=select_task_model,app=self)
-        # self.select_task_view.set_controller(select_task_controller)
 
         # dashboard
-
         self.student_dashboard=StudentDashboard(
             self,
             height=screen_height,
             weight=screen_width,
             student_repo=self.student_repo,
-            fees_repo=self.fee_repo
+            fees_repo=self.fee_repo,
+            admit_student_model=self.admit_student_model,
+            fees_model=self.fees_model
         )
         self.student_dashboard.pack(
             fill="both",expand=True

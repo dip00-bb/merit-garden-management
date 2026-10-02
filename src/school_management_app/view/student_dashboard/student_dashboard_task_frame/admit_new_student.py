@@ -10,19 +10,30 @@ from ....components import AdmissionInformation
 from ....controller import AdmitStudentController
 from CTkMessagebox import CTkMessagebox
 
-from ....model import AdmitStudentModel
-from ....model import FeesModel
 
 
 class AdmitNewStudent(ctk.CTkFrame):
-    def __init__ (self,parent,student_repo,fees_repo,**kwargs):
+    def __init__ (self,
+                  parent,
+                  student_repo,
+                  fees_repo,
+                  fees_model,
+                  admit_student_model,
+                  **kwargs
+                  ):
+        
+        
         super().__init__(parent,**kwargs) 
         
 
         self.controller=None
         self.pack_propagate(False)
+        
         self.student_repo=student_repo
         self.fees_repo=fees_repo
+        self.fees_model=fees_model
+        self.admit_student_model=admit_student_model
+        
         # ------------------------------------------------------------ scrollable container -----------------------------------------------
         self.scrollable_container=ctk.CTkScrollableFrame(self)
         self.scrollable_container.pack(fill="both",expand=True)
@@ -46,15 +57,14 @@ class AdmitNewStudent(ctk.CTkFrame):
         self.submit_information=ctk.CTkButton(self.scrollable_container,text="Add Student")
         self.submit_information.pack(ipadx=10,ipady=10)
         
-        fees_model= FeesModel
-        admit_student_model= AdmitStudentModel
+
         admit_student_controller=AdmitStudentController(
             information_field_parent=self,
             submit_button=self.submit_information,
             student_repo=self.student_repo,
             fees_repo=self.fees_repo,
-            admit_student_model=admit_student_model,
-            fees_model=fees_model
+            admit_student_model=self.admit_student_model,
+            fees_model=self.fees_model
             )
            
         self.student_permanent_address.set_controller(admit_student_controller)

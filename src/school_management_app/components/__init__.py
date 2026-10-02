@@ -6,4 +6,5 @@ from .forms.permanent_address import PermanentAddress
 from .forms.present_address import PresentAddress
 
 
-from .forms.student.fees_management.manage_fee import ManageFee
+from .fees_management.manage_fee import ManageFee
+from .fees_management.find_student import FindStudent
