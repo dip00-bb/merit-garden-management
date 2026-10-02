@@ -4,3 +4,4 @@ from .student_dashboard.student_dashboard_sidebar.student_dashboard_sidebar_mode
 
 
 from .student_dashboard.admit_student.admit_student_model import AdmitStudentModel
+from .student_dashboard.fees_model.fees_model import FeesModel

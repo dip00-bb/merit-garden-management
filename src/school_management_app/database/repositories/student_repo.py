@@ -1,3 +1,4 @@
+import sqlite3
 class StudentRepository:
 
     def __init__(self, database):
@@ -110,9 +111,15 @@ class StudentRepository:
             student.student_status,
 
         )
-        self.cursor.execute(query, params)
-        self.connection.commit()
+        
+        try:
+            self.cursor.execute(query, params)
+            self.connection.commit()
+            return self.cursor.lastrowid
+        except sqlite3.Error as e:
+            return e
 
+        
 
 
     # ---------------------------------------------------------

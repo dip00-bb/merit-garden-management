@@ -24,10 +24,10 @@ from school_management_app.database import Database
 # repository
 
 from school_management_app.database import StudentRepository
+from school_management_app.database import FeesRepository
 
 # schema
-from school_management_app.database import STUDENT_SCHEMA 
-
+from school_management_app.database import STUDENT_SCHEMA,STUDENT_FEE
 
 
 class App(ctk.CTk):
@@ -44,7 +44,8 @@ class App(ctk.CTk):
             cursor=connection.cursor()
             
 
-            cursor.execute(STUDENT_SCHEMA )
+            cursor.execute(STUDENT_SCHEMA)
+            cursor.execute(STUDENT_FEE) 
             
             connection.commit()
         except sqlite3.Error as e:
@@ -54,7 +55,7 @@ class App(ctk.CTk):
             
         # repository
         self.student_repo=StudentRepository(database)
-        
+        self.fee_repo=FeesRepository(database)
         
         # screen size
         screen_width=self.winfo_screenwidth()
@@ -123,7 +124,8 @@ class App(ctk.CTk):
             self,
             height=screen_height,
             weight=screen_width,
-            student_repo=self.student_repo
+            student_repo=self.student_repo,
+            fees_repo=self.fee_repo
         )
         self.student_dashboard.pack(
             fill="both",expand=True

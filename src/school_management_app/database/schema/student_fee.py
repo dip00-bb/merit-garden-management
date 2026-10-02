@@ -30,12 +30,13 @@ CREATE TABLE IF NOT EXISTS student_fee (
     half_yearly_fee_status TEXT DEFAULT 'unpaid',
     annual_fee_status TEXT DEFAULT 'unpaid',
     
+
     
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+    updated_at TEXT DEFAULT CURRENT_TIMESTAMP,
     
     
-    FOREIGN KEY (student_id) REFERENCES students(student_id) 
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
     
 )
 """

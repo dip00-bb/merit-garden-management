@@ -1,16 +1,24 @@
 from ....utilitis import bangladesh
-from ....model import AdmitStudentModel
-from email_validator import EmailNotValidError
+
+
+
 class AdmitStudentController:
     def __init__(self,
                  information_field_parent,
                  submit_button,
-                 student_repo):
+                 student_repo,
+                 fees_repo,
+                 admit_student_model,
+                 fees_model
+                 ):
         
         self.same_as_present=False
         self.submit_button=submit_button
         self.student_repo=student_repo
+        self.fees_repo=fees_repo
         self.information_field_parent=information_field_parent
+        self.admit_student_model=admit_student_model
+        self.fees_model=fees_model
         
         self.student_personal_information=self.information_field_parent.student_personal_information
         self.student_present_address=self.information_field_parent.student_present_address
@@ -71,7 +79,7 @@ class AdmitStudentController:
 
         
         try:
-            student_model = AdmitStudentModel(
+            student_model = self.admit_student_model(
                 student_name=student_name,
                 student_image=student_image,
                 mother_name=mother_name,
@@ -105,9 +113,20 @@ class AdmitStudentController:
             error_msg= str(e)
             self.information_field_parent.show_error(error_msg)
             return
-        self.student_repo.create_student(
-            student_model
+        
+        
+        last_id=self.student_repo.create_student(student_model) # newly created student id
+        
+        # student_id, admission_fee, monthly_fee,academic_year
+        
+        fees_model=self.fees_model(
+            student_id=last_id,
+            admission_fee=student_model.admission_fee,
+            monthly_fee=student_model.monthly_fee,
+            academic_year=student_model.academic_year
         )
+        self.fees_repo.create_fees(fees_model)
+
         
                
     # function of present address
