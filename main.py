@@ -26,10 +26,6 @@ from school_management_app.database import Database
 from school_management_app.database import StudentRepository
 from school_management_app.database import FeesRepository
 
-# model
-
-from school_management_app.model import AdmitStudentModel
-from school_management_app.model import FeesModel
 
 # schema
 from school_management_app.database import STUDENT_SCHEMA,STUDENT_FEE
@@ -62,9 +58,6 @@ class App(ctk.CTk):
         self.student_repo=StudentRepository(database)
         self.fee_repo=FeesRepository(database)
         
-        # models
-        self.admit_student_model=AdmitStudentModel
-        self.fees_model=FeesModel
         
         # screen size
         screen_width=self.winfo_screenwidth()
@@ -88,8 +81,6 @@ class App(ctk.CTk):
             weight=screen_width,
             student_repo=self.student_repo,
             fees_repo=self.fee_repo,
-            admit_student_model=self.admit_student_model,
-            fees_model=self.fees_model
         )
         self.student_dashboard.pack(
             fill="both",expand=True

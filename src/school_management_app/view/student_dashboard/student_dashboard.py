@@ -12,15 +12,25 @@ from .student_dashboard_task_frame.fees_management import FeesManagement
 
 from ...controller import StudentDashboardController
 from ...model import StudentDashboardModel
-
+from ...model import AdmitStudentModel,FeesModel
 class StudentDashboard(ctk.CTkFrame):
-    def __init__(self,parent,height,weight,student_repo,fees_repo,admit_student_model,fees_model,**kwargs):
+    def __init__(
+                 self,
+                 parent,
+                 height,
+                 weight,
+                 student_repo,
+                 fees_repo,
+                 **kwargs
+                 ):
+        
+        
         super().__init__(parent,height=height,width=weight,**kwargs)
         
         self.student_repo=student_repo
         self.fees_repo=fees_repo
-        self.admit_student_model=admit_student_model
-        self.fees_model=fees_model
+
+
         
         
         self.pack_propagate(False)
@@ -35,25 +45,61 @@ class StudentDashboard(ctk.CTkFrame):
         self.attendance_frame=Attendance(
             self
         )
+        
+        
+        
+        
+        
+        
         self.school_result_monitor_frame=ResultMonitor(
             self
         )
+        
+        
         self.board_result_monitor_frame=BoardResult(
             self
         )
+        
+        
+        
+        
+        
+        self.admit_student_model=AdmitStudentModel
+        self.fees_model=FeesModel
+        
         self.admit_student_frame=AdmitNewStudent(
             self,
             student_repo=self.student_repo,
             fees_repo=self.fees_repo,
-            fees_model=self.fees_model,
-            admit_student_model=self.admit_student_model
+            admit_student_model=self.admit_student_model,
+            fees_model=self.fees_model
         )
+        
+        
+        
+        
+        
         self.fees_management_frame=FeesManagement(
-            self
+            self,
+            fees_repo=self.fees_repo,
+            student_repo=self.student_repo,
+            fees_model=self.fees_model
         )
+        
+        
+        
         self.result_management_frame=ResultManagement(
             self
         )
+        
+        
+        
+        
+        
+        
+        
+        
+        
         self.show_result_frame=ShowResult(
             self
         )   
@@ -62,7 +108,31 @@ class StudentDashboard(ctk.CTkFrame):
                 
 
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         self.current_frame=self.attendance_frame
+
         
         grid_widget(
             entry=self.attendance_frame,

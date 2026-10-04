@@ -271,3 +271,12 @@ class StudentRepository:
             query,
             params
         )
+        
+    def get_students_by_class_and_year(self,class_,year):
+        query="""
+            SELECT * 
+            FROM students
+            WHERE current_class = ?
+                AND academic_year = ?
+        """
+        return self.cursor.execute(query,(class_,year)).fetchall()

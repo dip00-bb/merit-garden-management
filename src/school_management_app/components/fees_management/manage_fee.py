@@ -112,3 +112,14 @@ class ManageFee(ctk.CTkFrame):
             grid_widget(entry=status_label, r=2, c=column, colspan=1, rowspan=1, direction="ew", px=0, py=0)            
             
         table_frame.pack(fill="x")
+        
+        
+        self.button=ctk.CTkButton(
+            self,
+            text="Update Status"
+        )
+        self.button.pack(pady=10)
+
+    def set_controller(self, controller):
+        self.controller = controller
+        self.button.configure(command=controller.print_2)
