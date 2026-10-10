@@ -122,4 +122,3 @@ class ManageFee(ctk.CTkFrame):
 
     def set_controller(self, controller):
         self.controller = controller
-        self.button.configure(command=controller.print_2)

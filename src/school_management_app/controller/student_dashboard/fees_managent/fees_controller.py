@@ -13,11 +13,18 @@ class FeesController:
         
         fetched_data=self.student_repo.get_students_by_class_and_year(class_,year)
         students= [dict(student) for student in fetched_data]
-        
+    
         for student in students:
-            student_list=StudentList(self.view,student_name=student['student_name'],student_class=student['current_class'],student_roll=student['class_roll'],r=0)
-            student_list.pack(pady=10)
+            self.view.student_list=StudentList(self.view,
+                                               student_id=student['student_id'],
+                                               student_name=student['student_name'],
+                                               student_class=student['current_class'],
+                                               student_roll=student['class_roll'],
+                                               r=len(students))
+            
+            self.view.student_list.set_controller(self)
+            self.view.student_list.pack(pady=10,padx=20,fill="x")
         
 
-    def print_2(self):
-        print(self.view.x)
+    def print_student_id(self,student_id):
+        print(f"Student ID: {student_id}")

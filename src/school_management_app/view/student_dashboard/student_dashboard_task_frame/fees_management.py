@@ -28,7 +28,7 @@ class FeesManagement(ctk.CTkFrame):
         if (len(self.fetched_information)>1):
             self.fees_view.pack(pady=10)
         
-        
+        self.student_list=""
 
 
        
