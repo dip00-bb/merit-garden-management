@@ -1,11 +1,12 @@
 from ....components.common_component.student_list import StudentList
-
+from ....view.student_dashboard.student_dashboard_task_frame.fees_management.manage_fee import ManageFee
 class FeesController:
-    def __init__(self, view,student_repo, model,app):
+    def __init__(self, view,student_repo,fees_repo, model,app):
         self.view = view
         self.model = model
         self.app = app 
         self.student_repo=student_repo
+        self.fees_repo=fees_repo
         
     def search_for_student(self):
         year=self.view.find_student.year_entry.get()
@@ -29,5 +30,8 @@ class FeesController:
     def print_student_id(self,student_id):
         print(f"Student ID: {student_id}")
         
-    def switch_to_manage_fee(self):
-        self.view.parent.attach_fees_management_frame()   
+    def switch_to_manage_fee(self,student_id):
+        
+        self.view.parent_manage_fee=ManageFee(self.view.parent,student_id=student_id,fees_repo=self.fees_repo)
+        
+        self.view.parent.attach_fees_management_frame(self.view.parent_manage_fee)   

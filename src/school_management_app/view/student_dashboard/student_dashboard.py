@@ -74,10 +74,6 @@ class StudentDashboard(ctk.CTkFrame):
         )
 
 
-        self.manage_fee=ManageFee(
-            self
-        )
-
 
 
 
@@ -249,14 +245,24 @@ class StudentDashboard(ctk.CTkFrame):
             px=0,
             py=0,
         )
+
+
+
+
+
+
+
+
+
+
         
-    def attach_fees_management_frame(self):
+    def attach_fees_management_frame(self, manage_fee_frame):
         if self.current_frame is not None:
             self.current_frame.grid_forget()
-        self.current_frame=self.manage_fee
+        self.current_frame=manage_fee_frame
         
         grid_widget(
-            entry=self.manage_fee,
+            entry=manage_fee_frame,
             c=1,
             colspan=11,
             r=0,

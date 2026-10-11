@@ -36,8 +36,8 @@ class FeesRepository:
         self.cursor.execute(query, params)
         self.connection.commit()
         
-    # def find_fees_information(self,roll,class_,year):
-    #     query="""
-    #         SELECT * FROM student_fee
-    #     """
-        
+    def find_fees_information(self,student_id):
+        query="""
+            SELECT * FROM student_fee WHERE student_id = ?
+        """
+        return self.cursor.execute(query,(student_id,)).fetchall()

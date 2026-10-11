@@ -42,4 +42,4 @@ class StudentList(ctk.CTkFrame):
     
     def set_controller(self,controller):
         self.controller=controller
-        self.button.configure(command=lambda: self.controller.switch_to_manage_fee())
+        self.button.configure(command=lambda: self.controller.switch_to_manage_fee(self.student_id))

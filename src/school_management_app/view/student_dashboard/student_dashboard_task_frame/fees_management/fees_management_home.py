@@ -37,6 +37,7 @@ class FeesManagementHome(ctk.CTkFrame):
             view=self,
             model=self.model,
             student_repo=self.student_repo,
+            fees_repo=self.fees_repo,
             app=parent
         )
         

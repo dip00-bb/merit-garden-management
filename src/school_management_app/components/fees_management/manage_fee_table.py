@@ -2,15 +2,13 @@ import customtkinter as ctk
 from ...utilitis import grid_widget
 
 class ManageFeeTable(ctk.CTkFrame):
-    def __init__(self, parent, **kwargs):
+    def __init__(self, parent,fee, **kwargs):
         super().__init__(parent,border_width=1,border_color="blue", **kwargs)
 
-
+        self.fee=fee
 
         # # Add more widgets and functionality for managing fees here
-        
-        # self.year_label = ctk.CTkLabel(self, text="2026", font=("Arial", 16))
-        # grid_widget( entry=self.year_label, r=0, c=10, colspan=1,rowspan=1,direction="ew", px=10, py=10)        
+           
         
         label_specs = [
             "Admission\nFee",
