@@ -8,7 +8,8 @@ from .student_dashboard_task_frame.show_result import ShowResult
 from .student_dashboard_task_frame.result_monitor import ResultMonitor
 from .student_dashboard_task_frame.board_result import BoardResult
 from .student_dashboard_task_frame.admit_new_student import AdmitNewStudent
-from .student_dashboard_task_frame.fees_management import FeesManagement
+from .student_dashboard_task_frame.fees_management.fees_management_home import FeesManagementHome
+from .student_dashboard_task_frame.fees_management.manage_fee import ManageFee
 
 from ...controller import StudentDashboardController
 from ...model import StudentDashboardModel
@@ -46,24 +47,13 @@ class StudentDashboard(ctk.CTkFrame):
             self
         )
         
-        
-        
-        
-        
-        
         self.school_result_monitor_frame=ResultMonitor(
             self
         )
         
-        
         self.board_result_monitor_frame=BoardResult(
             self
         )
-        
-        
-        
-        
-        
         self.admit_student_model=AdmitStudentModel
         self.fees_model=FeesModel
         
@@ -76,64 +66,41 @@ class StudentDashboard(ctk.CTkFrame):
         )
         
         
-        
-        
-        
-        self.fees_management_frame=FeesManagement(
+        self.fees_management_home_frame=FeesManagementHome(
             self,
             fees_repo=self.fees_repo,
             student_repo=self.student_repo,
             fees_model=self.fees_model
         )
-        
-        
+
+
+        self.manage_fee=ManageFee(
+            self
+        )
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         self.result_management_frame=ResultManagement(
             self
         )
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            
         self.show_result_frame=ShowResult(
             self
         )   
         
-        
-                
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         self.current_frame=self.attendance_frame
 
-        
         grid_widget(
             entry=self.attendance_frame,
             c=1,
@@ -236,14 +203,14 @@ class StudentDashboard(ctk.CTkFrame):
             py=0,
         )
   
-    def attach_fees_management_frame(self):    
+    def attach_fees_management_home_frame(self):    
 
         if self.current_frame is not None:
             self.current_frame.grid_forget()
-        self.current_frame=self.fees_management_frame        
+        self.current_frame=self.fees_management_home_frame        
         
         grid_widget(
-            entry=self.fees_management_frame,
+            entry=self.fees_management_home_frame,
             c=1,
             colspan=11,
             r=0,
@@ -274,6 +241,22 @@ class StudentDashboard(ctk.CTkFrame):
         
         grid_widget(
             entry=self.show_result_frame,
+            c=1,
+            colspan=11,
+            r=0,
+            rowspan=24,
+            direction="nsew",
+            px=0,
+            py=0,
+        )
+        
+    def attach_fees_management_frame(self):
+        if self.current_frame is not None:
+            self.current_frame.grid_forget()
+        self.current_frame=self.manage_fee
+        
+        grid_widget(
+            entry=self.manage_fee,
             c=1,
             colspan=11,
             r=0,

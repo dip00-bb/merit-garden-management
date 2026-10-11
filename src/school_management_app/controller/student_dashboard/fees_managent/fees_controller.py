@@ -28,3 +28,6 @@ class FeesController:
 
     def print_student_id(self,student_id):
         print(f"Student ID: {student_id}")
+        
+    def switch_to_manage_fee(self):
+        self.view.parent.attach_fees_management_frame()   

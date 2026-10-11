@@ -16,7 +16,7 @@ class StudentDashboardController:
             elif (selected_task=="admit_student"):
                 self.app.attach_admit_student_frame()
             elif(selected_task=="fees_management"):
-                self.app.attach_fees_management_frame()
+                self.app.attach_fees_management_home_frame()
             elif (selected_task=="result_management"):
                 self.app.attach_result_management_frame()
             elif (selected_task=="show_result"):

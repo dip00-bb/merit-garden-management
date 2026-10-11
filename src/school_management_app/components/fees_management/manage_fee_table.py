@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from ...utilitis import grid_widget
 
-class ManageFee(ctk.CTkFrame):
+class ManageFeeTable(ctk.CTkFrame):
     def __init__(self, parent, **kwargs):
         super().__init__(parent,border_width=1,border_color="blue", **kwargs)
 

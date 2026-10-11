@@ -6,7 +6,7 @@ from .forms.permanent_address import PermanentAddress
 from .forms.present_address import PresentAddress
 
 
-from .fees_management.manage_fee import ManageFee
+from .fees_management.manage_fee_table import ManageFeeTable
 from .fees_management.find_student import FindStudent
 
 from .common_component.common_button import CommonButton
